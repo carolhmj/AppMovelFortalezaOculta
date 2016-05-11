@@ -25,6 +25,7 @@ public class TelaDeEntrada extends Activity {
     private void initComponents() {
         imageView = (ImageView) findViewById(R.id.animacao_imageView);
         imageView.setBackgroundResource(R.drawable.animacao_entrada);
+
         AnimationDrawable animationDrawable = (AnimationDrawable) imageView.getBackground();
         animationDrawable.start();
 

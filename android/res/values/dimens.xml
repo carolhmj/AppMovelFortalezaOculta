@@ -8,4 +8,8 @@
     <dimen name="margem_bg_vertical">80dp</dimen>
     <dimen name="margem_bg_horizontal">40dp</dimen>
     <integer name="frameRateAnimacao">70</integer>
+
+    <!-- Abaixo apenas as dines referentes ao Fortaleza Oculta -->
+
+    <dimen name="texto_padrao_FO">40sp</dimen>
 </resources>
