@@ -118,4 +118,5 @@ idea {
 dependencies {
     compile 'com.google.android.gms:play-services:7.5.0'
     compile 'com.google.code.gson:gson:2.2.4'
+    //compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 }

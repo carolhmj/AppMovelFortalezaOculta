@@ -7,4 +7,5 @@
     <dimen name="texto_pequeno">14sp</dimen>
     <dimen name="margem_bg_vertical">80dp</dimen>
     <dimen name="margem_bg_horizontal">40dp</dimen>
+    <integer name="frameRateAnimacao">70</integer>
 </resources>
