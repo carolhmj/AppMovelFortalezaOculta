@@ -97,4 +97,9 @@
     <string name="sem_permissao_para_realizar_mecanica">Voce não tem permissão para realizar essa mecânica.</string>
     <string name="menu">Menu</string>
     <string name="caminhadas">Caminhadas</string>
+    <string name="cooperativo">Cooperativo</string>
+    <string name="em_construcao">Ainda em cosntrução</string>
+    <string name="bode_ioio">Bode Ioio</string>
+    <string name="calungueira" translatable="false">Calungueira</string>
+    <string name="gato_pingado" translatable="false">Gato Pingado</string>
 </resources>

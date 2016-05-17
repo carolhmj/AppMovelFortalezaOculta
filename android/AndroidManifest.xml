@@ -120,7 +120,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="br.great.jogopervasivo.actvititesDoJogo.activitiesFortalezaOculta.MenuJogos"></activity>
+        <activity android:name="br.great.jogopervasivo.actvititesDoJogo.activitiesFortalezaOculta.MenuJogos" />
+        <activity android:name="br.great.jogopervasivo.actvititesDoJogo.activitiesFortalezaOculta.MenuCaminhadas"></activity>
     </application>
 
 </manifest>

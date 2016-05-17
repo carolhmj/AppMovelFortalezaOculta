@@ -11,5 +11,6 @@
 
     <!-- Abaixo apenas as dines referentes ao Fortaleza Oculta -->
 
-    <dimen name="texto_padrao_FO">40sp</dimen>
+    <dimen name="texto_padrao_FO">30sp</dimen>
+    <dimen name="tamanho_icone_menu">75dp</dimen>
 </resources>

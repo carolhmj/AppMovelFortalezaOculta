@@ -3,22 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerInParent="true"
     android:background="@color/fundoTelaEscuro"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.great.jogopervasivo.actvititesDoJogo.activitiesFortalezaOculta.MenuJogos">
+    tools:context="br.great.jogopervasivo.actvititesDoJogo.activitiesFortalezaOculta.MenuCaminhadas">
 
     <TextView
-        android:id="@+id/menu_jogos_titulo"
+        android:id="@+id/menu_caminhadas_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu"
-        android:paddingBottom="20dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="20dp"
+        android:text="@string/caminhadas" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -27,7 +26,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/menu_jogos_botao_caminhada"
+            android:id="@+id/menu_caminhadas_botao_bode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -40,16 +39,16 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/caminhadas_logo" />
+                android:src="@drawable/bode_logo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/caminhadas" />
+                android:text="@string/bode_ioio" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/menu_jogos_botao_cooperativo"
+            android:id="@+id/menu_caminhadas_botao_calungueira"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -62,16 +61,16 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/cooperativo_logo" />
+                android:src="@drawable/calung_logo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cooperativo" />
+                android:text="@string/calungueira" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/menu_jogos_botao_outro"
+            android:id="@+id/menu_caminhadas_botao_gato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -84,12 +83,13 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/other_logo" />
+                android:src="@drawable/gato_logo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="placeholder" />
+                android:text="@string/gato_pingado" />
         </LinearLayout>
     </LinearLayout>
+
 </RelativeLayout>

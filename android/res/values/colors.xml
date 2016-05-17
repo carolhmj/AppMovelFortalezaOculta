@@ -3,4 +3,5 @@
     <color name="fundoTela">#657E68</color>
     <color name="fundoTelaEscuro">#494848</color>
     <color name="texto">#fff</color>
+    <color name="realce_botao">#ecede6</color>
 </resources>

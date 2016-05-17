@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+    <style name="AppTheme" parent="android:Theme.Holo.NoActionBar">
         <item name="android:windowBackground">@color/fundoTela</item>
         <item name="android:textColor">@color/texto</item>
         <item name="android:textSize">@dimen/texto_padrao_FO</item>
