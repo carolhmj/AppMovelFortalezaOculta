@@ -14,6 +14,7 @@ public class MenuJogos extends Activity {
     private LinearLayout botaoCaminhada;
     private LinearLayout botaoCooperativo;
     private LinearLayout outro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,49 +28,39 @@ public class MenuJogos extends Activity {
         botaoCaminhada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuJogos.this,MenuCaminhadas.class));
+                startActivity(new Intent(MenuJogos.this, MenuCaminhadas.class));
             }
         });
-        botaoCaminhada.setOnTouchListener(new EfeitoClique());
+        botaoCaminhada.setOnTouchListener(new EfeitoClique(this));
 
         //Segundo botão
-        botaoCooperativo =  (LinearLayout) findViewById(R.id.menu_jogos_botao_cooperativo);
+        botaoCooperativo = (LinearLayout) findViewById(R.id.menu_jogos_botao_cooperativo);
         botaoCooperativo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               mostrarAlerta();
+                mostrarAlerta();
             }
         });
-        botaoCooperativo.setOnTouchListener(new EfeitoClique());
+        botaoCooperativo.setOnTouchListener(new EfeitoClique(this));
 
         //Terceiro Botão
-        outro =  (LinearLayout) findViewById(R.id.menu_jogos_botao_outro);
+        outro = (LinearLayout) findViewById(R.id.menu_jogos_botao_outro);
         outro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mostrarAlerta();
             }
         });
-        outro.setOnTouchListener(new EfeitoClique());
+        outro.setOnTouchListener(new EfeitoClique(this));
     }
 
-    private void mostrarAlerta(){
+    private void mostrarAlerta() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MenuJogos.this);
         builder.setTitle(R.string.app_name);
         builder.setMessage(R.string.em_construcao);
-        builder.setNegativeButton(R.string.OK,null);
+        builder.setNegativeButton(R.string.OK, null);
         builder.create().show();
     }
 
-    public class EfeitoClique implements View.OnTouchListener {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
-                view.setBackgroundColor(getResources().getColor(R.color.realce_botao));
-            }else{
-                view.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-            }
-            return false;
-        }
-    }
+
 }

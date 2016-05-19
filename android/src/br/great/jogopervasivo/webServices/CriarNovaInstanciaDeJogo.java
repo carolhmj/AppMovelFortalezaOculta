@@ -29,6 +29,7 @@ public class CriarNovaInstanciaDeJogo extends AsyncTask<String, Void, Boolean> {
         this.context = context;
     }
 
+    public CriarNovaInstanciaDeJogo(){}
 
     @Override
     protected void onPreExecute() {
@@ -41,6 +42,11 @@ public class CriarNovaInstanciaDeJogo extends AsyncTask<String, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(String... params) {
+       return criar(params);
+    }
+
+
+    public boolean criar(String... params){
         JSONArray jsonArrayReq = new JSONArray();
         JSONObject jsonObjectReq = new JSONObject();
         JSONObject jsonObject1Req = new JSONObject();
@@ -57,6 +63,7 @@ public class CriarNovaInstanciaDeJogo extends AsyncTask<String, Void, Boolean> {
         }
 
         String resposta = Servidor.fazerGet(jsonArrayReq.toString());
+
         try {
             JSONArray jsonArray = new JSONArray(resposta);
             return jsonArray.getJSONObject(0).getBoolean("result");

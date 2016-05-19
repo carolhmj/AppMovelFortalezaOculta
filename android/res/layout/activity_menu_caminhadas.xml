@@ -29,15 +29,14 @@
             android:id="@+id/menu_caminhadas_botao_bode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="@dimen/tamanho_icone_menu"
                 android:layout_height="@dimen/tamanho_icone_menu"
-                android:layout_marginBottom="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/bode_logo" />
 
@@ -51,15 +50,14 @@
             android:id="@+id/menu_caminhadas_botao_calungueira"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="@dimen/tamanho_icone_menu"
                 android:layout_height="@dimen/tamanho_icone_menu"
-                android:layout_marginBottom="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/calung_logo" />
 
@@ -73,15 +71,14 @@
             android:id="@+id/menu_caminhadas_botao_gato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="@dimen/tamanho_icone_menu"
                 android:layout_height="@dimen/tamanho_icone_menu"
-                android:layout_marginBottom="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/gato_logo" />
 

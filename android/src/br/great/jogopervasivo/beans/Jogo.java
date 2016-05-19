@@ -6,6 +6,11 @@ import java.util.List;
  * Created by messiaslima on 28/11/2014.
  */
 public class Jogo {
+
+    public static final int CAMINHADA_BODE = 1;
+    public static final int CAMINHADA_CALUNG = 2;
+    public static final int CAMINHADA_GATO = 3;
+
     private int id;
     private String nome;
     private String icone;
