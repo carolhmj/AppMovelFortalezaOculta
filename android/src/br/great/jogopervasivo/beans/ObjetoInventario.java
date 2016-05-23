@@ -94,7 +94,7 @@ public class ObjetoInventario {
         List<Jogador> jogadoresProximos = new ArrayList<>();
 
         /*Recupera a lista de jogadores dos grupos, verifica quais estão dentro do limiar de proximidade
-         * e os coloca em um Array diferente TODO: continuar a comentar */
+         * e os coloca em um Array diferente */
         for (Grupo grupo : InformacoesTemporarias.grupos) {
             for (Jogador jogador : grupo.getJogadores()) {
                 if (isProximo(jogador) && (jogador.getId() != InformacoesTemporarias.idJogador)) {

@@ -84,7 +84,7 @@ public class MenuCaminhadas extends Activity {
 
                             //Recupera instancia com o  mesmo Device ID
                             if (i.getNomeFicticio().equals(deviceId)){
-                                //TODO:Terminar o Fluxo de entrar no jogo
+
                             }
                         }
 
