@@ -2,6 +2,7 @@ package br.great.jogopervasivo.beans.mecanicas;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
@@ -18,7 +19,7 @@ import java.io.File;
 import java.io.IOException;
 
 import br.ufc.great.arviewer.android.R;
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -52,7 +53,7 @@ public class CSons extends Mecanica implements Imecanica {
     }
 
     @Override
-    public void realizarMecanica(final TelaPrincipalActivity context) {
+    public void realizarMecanica(final Context context) {
 
         if (getEstado()==2){
             return;
@@ -99,71 +100,71 @@ public class CSons extends Mecanica implements Imecanica {
             @Override
             protected void onPostExecute(Boolean aBoolean) {
                 if (aBoolean) {
-
-                    //Infla o layout do gravador
-                    View layout = context.getLayoutInflater().inflate(R.layout.record_audio, null);
-
-                    //Cria arquivo temporário
-                    final File audioFile = InformacoesTemporarias.criarAudioTemporario();
-
-                    //Configura o gravador de mídia
-                    final MediaRecorder recorder = new MediaRecorder();
-                    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-                    recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-                    recorder.setOutputFile(audioFile.getAbsolutePath());
-                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-                    try {
-                        recorder.prepare();
-                    } catch (IOException ioe) {
-                        Log.e(Constantes.TAG, "Erro ao preparar para gravar");
-                        ioe.printStackTrace();
-                    }
-
-                    final Button botao = (Button) layout.findViewById(R.id.record_audio_botao);
-
-                    //Adiciona a ação do botão de gravar
-                    botao.setOnClickListener(new View.OnClickListener() {
-                        boolean gravando = false;
-
-                        @Override
-                        public void onClick(View v) {
-                            if (gravando) {
-                                recorder.stop();
-                                recorder.reset();
-                                recorder.release();
-                                gravando = false;
-                                botao.setText(R.string.gravar_audio);
-                            } else {
-                                recorder.start();
-                                botao.setText(R.string.gravando);
-                                gravando = true;
-                            }
-                        }
-                    });
-
-                    //Mostra um alert dialog com o layout inflado
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle(getNome());
-                    builder.setPositiveButton(R.string.enviar, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            UploadDeArquivo.enviarAudio(context, audioFile, CSons.this);
-                        }
-                    });
-                    builder.setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            audioFile.delete();
-                        }
-                    });
-                    builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            audioFile.delete();
-                        }
-                    });
-                    builder.setView(layout);
-                    builder.create().show();
+//
+//                    //Infla o layout do gravador
+//                    View layout = context.getLayoutInflater().inflate(R.layout.record_audio, null);
+//
+//                    //Cria arquivo temporário
+//                    final File audioFile = InformacoesTemporarias.criarAudioTemporario();
+//
+//                    //Configura o gravador de mídia
+//                    final MediaRecorder recorder = new MediaRecorder();
+//                    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+//                    recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+//                    recorder.setOutputFile(audioFile.getAbsolutePath());
+//                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+//                    try {
+//                        recorder.prepare();
+//                    } catch (IOException ioe) {
+//                        Log.e(Constantes.TAG, "Erro ao preparar para gravar");
+//                        ioe.printStackTrace();
+//                    }
+//
+//                    final Button botao = (Button) layout.findViewById(R.id.record_audio_botao);
+//
+//                    //Adiciona a ação do botão de gravar
+//                    botao.setOnClickListener(new View.OnClickListener() {
+//                        boolean gravando = false;
+//
+//                        @Override
+//                        public void onClick(View v) {
+//                            if (gravando) {
+//                                recorder.stop();
+//                                recorder.reset();
+//                                recorder.release();
+//                                gravando = false;
+//                                botao.setText(R.string.gravar_audio);
+//                            } else {
+//                                recorder.start();
+//                                botao.setText(R.string.gravando);
+//                                gravando = true;
+//                            }
+//                        }
+//                    });
+//
+//                    //Mostra um alert dialog com o layout inflado
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                    builder.setTitle(getNome());
+//                    builder.setPositiveButton(R.string.enviar, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            UploadDeArquivo.enviarAudio(context, audioFile, CSons.this);
+//                        }
+//                    });
+//                    builder.setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            audioFile.delete();
+//                        }
+//                    });
+//                    builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//                        @Override
+//                        public void onCancel(DialogInterface dialog) {
+//                            audioFile.delete();
+//                        }
+//                    });
+//                    builder.setView(layout);
+//                    builder.create().show();
                 } else {
                     mostarToastFeedback(context);
                 }

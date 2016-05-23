@@ -2,18 +2,14 @@ package br.great.jogopervasivo.beans.mecanicas;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import br.ufc.great.arviewer.android.R;
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -46,7 +42,7 @@ public class IrLocais extends Mecanica implements Imecanica {
     }
 
     @Override
-    public void realizarMecanica(final TelaPrincipalActivity context) {
+    public void realizarMecanica(final Context context) {
 
 
         if (getEstado()==2){

@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.great.jogopervasivo.actvititesDoJogo.InventarioActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.InventarioActivity;
 import br.great.jogopervasivo.beans.ObjetoInventario;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -81,10 +81,10 @@ public class RecuperarObjetosInventario {
 
             @Override
             protected void onPostExecute(Void aVoid) {
-               InventarioActivity instance = InventarioActivity.getInstace();
-                if (instance!=null){
-                    instance.atualizarLista();
-                }
+//               InventarioActivity instance = InventarioActivity.getInstace();
+//                if (instance!=null){
+//                    instance.atualizarLista();
+//                }
             }
         }.execute();
     }

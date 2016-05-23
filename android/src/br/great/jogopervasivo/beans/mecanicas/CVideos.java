@@ -2,6 +2,7 @@ package br.great.jogopervasivo.beans.mecanicas;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -18,7 +19,7 @@ import org.json.JSONObject;
 import java.io.File;
 
 
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -42,7 +43,7 @@ public class CVideos extends Mecanica implements Imecanica {
     }
 
     @Override
-    public void realizarMecanica(final TelaPrincipalActivity context) {
+    public void realizarMecanica(final Context context) {
 
 
         if (getEstado()==2){
@@ -95,7 +96,7 @@ public class CVideos extends Mecanica implements Imecanica {
                     File video = InformacoesTemporarias.criarVideoTemporario();
                     Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                     Log.i(Constantes.TAG, "Caminho do arquivo temporario: " + video.getAbsolutePath());
-                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VIDEO);
+//                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VIDEO);
 
                 } else {
                     mostarToastFeedback(context);

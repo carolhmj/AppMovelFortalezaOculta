@@ -1,6 +1,6 @@
 android {
     buildToolsVersion "21.1.2"
-    compileSdkVersion 21
+    compileSdkVersion 23
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -116,7 +116,10 @@ idea {
     }
 }
 dependencies {
-    compile 'com.google.android.gms:play-services:7.5.0'
     compile 'com.google.code.gson:gson:2.2.4'
-    //compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+    compile('com.mikepenz:materialdrawer:5.2.6@aar') {
+        transitive = true
+    }
+    compile 'com.google.android.gms:play-services-maps:9.0.0'
+    compile 'com.google.android.gms:play-services-gcm:9.0.0'
 }

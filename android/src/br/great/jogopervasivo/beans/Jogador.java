@@ -14,7 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import br.ufc.great.arviewer.android.R;
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
 import br.great.jogopervasivo.webServices.Servidor;
@@ -125,7 +125,7 @@ public class Jogador {
                     builder.setTitle(R.string.app_name);
                     builder.setMessage(context.getString(R.string.capturou_jogador) + ": " + getNome());
                     builder.create().show();
-                    ((TelaPrincipalActivity) context).diminuirOpacidadeMarcador(getNome());
+//                    ((TelaPrincipalActivity) context).diminuirOpacidadeMarcador(getNome());
                 } else {
                     Toast.makeText(context.getApplicationContext(), R.string.nao_pode_capturar_jogador, Toast.LENGTH_LONG).show();
                 }

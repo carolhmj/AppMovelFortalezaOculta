@@ -17,7 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.util.Armazenamento;
 import br.ufc.great.arviewer.android.R;
 import br.great.jogopervasivo.beans.mecanicas.CFotos;
@@ -173,36 +173,36 @@ public class UploadDeArquivo {
 
 
     private static String enviarArquivo(File arquivo, String uriServico) {
-        try {
-
-            URL url = new URL("http://"+Armazenamento.resgatarIP(TelaPrincipalActivity.getInstance())+":"+Armazenamento.resgatarPorta(TelaPrincipalActivity.getInstance())+ uriServico);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(1000 * 10);
-            connection.setRequestMethod("POST");
-            connection.setDoOutput(true);
-            OutputStream os = new BufferedOutputStream(connection.getOutputStream());
-            FileInputStream fis = new FileInputStream(arquivo);
-            byte[] b = new byte[(int) arquivo.length()];
-            fis.read(b);
-            os.write(b);
-            //clean up
-            os.flush();
-            DataInputStream input = new DataInputStream(connection.getInputStream());
-            String linha;
-            String resultado = "";
-            while ((linha = input.readLine()) != null) {
-                resultado = resultado + linha;
-            }
-            input.close();
-            Log.i(Constantes.TAG, resultado);
-            return resultado;
-        } catch (MalformedURLException mue) {
-            Log.e(Constantes.TAG, "URL mal formada");
-            mue.printStackTrace();
-        } catch (IOException ioe) {
-            Log.e(Constantes.TAG, "Erro de IO");
-            ioe.printStackTrace();
-        }
+//        try {
+//
+//            URL url = new URL("http://"+Armazenamento.resgatarIP(TelaPrincipalActivity.getInstance())+":"+Armazenamento.resgatarPorta(TelaPrincipalActivity.getInstance())+ uriServico);
+//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//            connection.setConnectTimeout(1000 * 10);
+//            connection.setRequestMethod("POST");
+//            connection.setDoOutput(true);
+//            OutputStream os = new BufferedOutputStream(connection.getOutputStream());
+//            FileInputStream fis = new FileInputStream(arquivo);
+//            byte[] b = new byte[(int) arquivo.length()];
+//            fis.read(b);
+//            os.write(b);
+//            //clean up
+//            os.flush();
+//            DataInputStream input = new DataInputStream(connection.getInputStream());
+//            String linha;
+//            String resultado = "";
+//            while ((linha = input.readLine()) != null) {
+//                resultado = resultado + linha;
+//            }
+//            input.close();
+//            Log.i(Constantes.TAG, resultado);
+//            return resultado;
+//        } catch (MalformedURLException mue) {
+//            Log.e(Constantes.TAG, "URL mal formada");
+//            mue.printStackTrace();
+//        } catch (IOException ioe) {
+//            Log.e(Constantes.TAG, "Erro de IO");
+//            ioe.printStackTrace();
+//        }
         return "";
     }
 }

@@ -1,20 +1,20 @@
-package br.great.jogopervasivo.actvititesDoJogo.activitiesFortalezaOculta;
+package br.great.jogopervasivo.actvititesDoJogo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import br.great.jogopervasivo.beans.Jogo;
+import br.great.jogopervasivo.util.EfeitoClique;
 import br.ufc.great.arviewer.android.R;
+
 
 public class MenuCaminhadas extends Activity {
 
 
-
     private LinearLayout botaoCaminhadaBode, botaoCaminhadaCalungueira, botaoCaminhadaGatoPingado;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,7 @@ public class MenuCaminhadas extends Activity {
         botaoCaminhadaBode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PreparaJogo preparaJogo =  new PreparaJogo(MenuCaminhadas.this, Jogo.CAMINHADA_BODE);
-                preparaJogo.execute();
+                startActivity(new Intent(MenuCaminhadas.this,Mapa.class));
             }
         });
 

@@ -1,26 +1,14 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.NoActionBar">
+    <style name="GdxTheme" parent="MaterialDrawerTheme">
         <item name="android:windowBackground">@color/fundoTela</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <item name="android:windowFullscreen">true</item>
         <item name="android:textColor">@color/texto</item>
         <item name="android:textSize">@dimen/texto_padrao_FO</item>
-        <!-- Customize your theme here. -->
-    </style>
-
-    <style name="GdxTheme" parent="android:Theme">
-
-        <item name="android:windowBackground">@android:color/transparent</item>
-
-        <item name="android:colorBackgroundCacheHint">@null</item>
-
-        <item name="android:windowAnimationStyle">@android:style/Animation</item>
-
-        <item name="android:windowNoTitle">true</item>
-
-        <item name="android:windowContentOverlay">@null</item>
-
-        <item name="android:windowFullscreen">true</item>
-
+        <item name="android:typeface">sans</item>
     </style>
 </resources>

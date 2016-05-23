@@ -16,7 +16,6 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import br.great.jogopervasivo.LoginActivity;
 import br.great.jogopervasivo.gcmUtil.InicializarGCM;
 import br.great.jogopervasivo.util.Armazenamento;
 import br.great.jogopervasivo.util.Constantes;
@@ -42,8 +41,8 @@ public class Servidor {
         String resultado = "";
         try {
             //URL url = new URL(Constantes.SERVIDOR_DE_APLICACAO + uri + json);
-            URL url = new URL("http", Armazenamento.resgatarIP(LoginActivity.getInstance()), Armazenamento.resgatarPorta(LoginActivity.getInstance()), uri + json);
-            Log.i(Constantes.TAG, Armazenamento.resgatarIP(LoginActivity.getInstance())+":"+Armazenamento.resgatarPorta(LoginActivity.getInstance())+ uri + json);
+            URL url = new URL("http", Armazenamento.resgatarIP(InformacoesTemporarias.contextoTelaPrincipal), Armazenamento.resgatarPorta(InformacoesTemporarias.contextoTelaPrincipal), uri + json);
+            Log.i(Constantes.TAG, Armazenamento.resgatarIP(InformacoesTemporarias.contextoTelaPrincipal)+":"+Armazenamento.resgatarPorta(InformacoesTemporarias.contextoTelaPrincipal)+ uri + json);
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(1000 * 60);
             DataInputStream input = new DataInputStream(connection.getInputStream());
@@ -116,8 +115,8 @@ public class Servidor {
                 InformacoesTemporarias.nomeJogador = jsonObject.optString("email", contexto.getString(R.string.desconhecido));
                 String idDispositivo = "";
                 idDispositivo = jsonObject.optString("idDispositivo", "");
-                InicializarGCM initGcm = new InicializarGCM(contexto, idDispositivo);
-                initGcm.inicializar(); //inicializa o serviço de GCM , testa se está ativo ou não
+               // InicializarGCM initGcm = new InicializarGCM(contexto, idDispositivo);
+               // initGcm.inicializar(); //inicializa o serviço de GCM , testa se está ativo ou não
                 return gerarResultado(true, "");
             }
         }

@@ -2,6 +2,7 @@ package br.great.jogopervasivo.beans.mecanicas;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -16,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import br.ufc.great.arviewer.android.R;
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -50,7 +51,7 @@ public class Vfotos extends Mecanica implements Imecanica {
     }
 
     @Override
-    public void realizarMecanica(final TelaPrincipalActivity context) {
+    public void realizarMecanica(final Context context) {
 
 
         if (getEstado()==2){
@@ -95,31 +96,31 @@ public class Vfotos extends Mecanica implements Imecanica {
             @Override
             protected void onPostExecute(Boolean aBoolean) {
                 progressDialog.dismiss();
-                if (aBoolean) {
-
-                    InformacoesTemporarias.jogoOcupado = true;
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    View view = context.getLayoutInflater().inflate(R.layout.vfotos, null);
-                    builder.setView(view);
-                    builder.setTitle(getNome());
-                    if (arqImage.trim().length() > 0) {
-                        ImageView imageView = (ImageView) view.findViewById(R.id.vfotos_imageView);
-                        imageView.setImageBitmap(BitmapFactory.decodeFile(PASTA_IMAGENS+"/"+ arqImage));
-                    } else {
-                        TextView textView = (TextView) view.findViewById(R.id.vfotos_textView);
-                        textView.setText(R.string.falha_de_conexao);
-                    }
-                    builder.setNegativeButton(R.string.OK, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            confirmarRealizacao(context, null,null,null);
-                        }
-                    });
-                    builder.create().show();
-
-                } else {
-                    mostarToastFeedback(context);
-                }
+//                if (aBoolean) {
+//
+//                    InformacoesTemporarias.jogoOcupado = true;
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                    View view = context.getLayoutInflater().inflate(R.layout.vfotos, null);
+//                    builder.setView(view);
+//                    builder.setTitle(getNome());
+//                    if (arqImage.trim().length() > 0) {
+//                        ImageView imageView = (ImageView) view.findViewById(R.id.vfotos_imageView);
+//                        imageView.setImageBitmap(BitmapFactory.decodeFile(PASTA_IMAGENS+"/"+ arqImage));
+//                    } else {
+//                        TextView textView = (TextView) view.findViewById(R.id.vfotos_textView);
+//                        textView.setText(R.string.falha_de_conexao);
+//                    }
+//                    builder.setNegativeButton(R.string.OK, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            confirmarRealizacao(context, null,null,null);
+//                        }
+//                    });
+//                    builder.create().show();
+//
+//                } else {
+//                    mostarToastFeedback(context);
+//                }
             }
         }.execute();
 

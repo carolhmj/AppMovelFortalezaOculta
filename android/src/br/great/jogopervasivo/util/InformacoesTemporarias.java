@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import br.ufc.great.arviewer.android.R;
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.beans.Grupo;
 import br.great.jogopervasivo.beans.InstanciaDeJogo;
 import br.great.jogopervasivo.beans.Jogo;
@@ -44,7 +44,7 @@ public class InformacoesTemporarias {
     public static Grupo grupoAtual;
     public static List<Mecanica> mecanicasAtuais = null;
     public static boolean jogoOcupado = false;
-    public static TelaPrincipalActivity contextoTelaPrincipal;
+    public static Context contextoTelaPrincipal;
     public static String mensagem = null;
     public static String life = null;
     public static List<Jogador> marcadoresDeJogadores = new ArrayList<>();

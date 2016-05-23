@@ -8,8 +8,9 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.util.Log;
 
-import br.great.jogopervasivo.LoginActivity;
-import br.great.jogopervasivo.actvititesDoJogo.ConfiguracoesActivity;
+import br.great.jogopervasivo.actvititesDoJogo.SplashScreen;
+
+//import br.great.jogopervasivo.actvititesDoJogo.ConfiguracoesActivity;
 
 /**
  * Created by messiaslima on 02/02/2015.
@@ -21,14 +22,14 @@ import br.great.jogopervasivo.actvititesDoJogo.ConfiguracoesActivity;
 public class Armazenamento {
 
     public static String resgatarIP(Context context){
-     String ip =  resgatarString(ConfiguracoesActivity.TAG_CONFIGURACAO_IP, context);
+     String ip =  resgatarString(Constantes.TAG_CONFIGURACAO_IP, context);
         if (ip.trim().length()==0){
             return "200.129.43.207";
         }
         return ip;
     }
     public static int resgatarPorta(Context context){
-        int porta =  resgatarInt(ConfiguracoesActivity.TAG_CONFIGURACAO_PORTA, context);
+        int porta =  resgatarInt(Constantes.TAG_CONFIGURACAO_PORTA, context);
         if (porta==-1){
             return 8083;
         }
@@ -37,9 +38,9 @@ public class Armazenamento {
 
 
     public static String resgatarIPArquivos(Context context){
-        String ip =  resgatarString(ConfiguracoesActivity.TAG_CONFIGURACAO_IP_ARQUIVOS, context);
+        String ip =  resgatarString(Constantes.TAG_CONFIGURACAO_IP_ARQUIVOS, context);
         if (ip.trim().length()==0){
-            salvar(ConfiguracoesActivity.TAG_CONFIGURACAO_IP_ARQUIVOS,"200.129.43.207",context);
+            salvar(Constantes.TAG_CONFIGURACAO_IP_ARQUIVOS,"200.129.43.207",context);
             return "http://"+resgatarIP(context)+"/pervasivedb/";
         }
         return "http://"+ip+"/pervasivedb/";
@@ -60,8 +61,8 @@ public class Armazenamento {
         editor.commit();
     }
 
-
-    //resgatar ultima posição salva
+//
+//    //resgatar ultima posição salva
 
     /**
      * Recupera a ultima localizacao salva no sharedPreferences
@@ -205,7 +206,7 @@ public class Armazenamento {
      * @return instancia de SharedPreferences
      */
     private static SharedPreferences novoPreferences(Context context) {
-        return context.getSharedPreferences(LoginActivity.class.getSimpleName(), Context.MODE_PRIVATE);
+        return context.getSharedPreferences(SplashScreen.class.getSimpleName(), Context.MODE_PRIVATE);
     }
 
     /**

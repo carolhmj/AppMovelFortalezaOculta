@@ -2,6 +2,7 @@ package br.great.jogopervasivo.beans.mecanicas;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -15,7 +16,7 @@ import org.json.JSONObject;
 import java.io.File;
 
 
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -41,7 +42,7 @@ public class VVideos extends Mecanica implements Imecanica {
     }
 
     @Override
-    public void realizarMecanica(final TelaPrincipalActivity context) {
+    public void realizarMecanica(final Context context) {
 
         if (getEstado()==2){
             return;
@@ -89,8 +90,8 @@ public class VVideos extends Mecanica implements Imecanica {
                     Intent intent = new Intent();
                     intent.setAction(android.content.Intent.ACTION_VIEW);
                     intent.setDataAndType(Uri.fromFile(new File(Constantes.PASTA_DE_ARQUIVOS, getArqVideo())), "video/*");
-                    TelaPrincipalActivity.mecanicaVVideosAtual = VVideos.this;
-                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VER_VIDEO);
+//                    TelaPrincipalActivity.mecanicaVVideosAtual = VVideos.this;
+//                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VER_VIDEO);
                 } else {
                     mostarToastFeedback(context);
                 }

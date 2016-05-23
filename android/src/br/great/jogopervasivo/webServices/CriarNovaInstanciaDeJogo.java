@@ -2,6 +2,7 @@ package br.great.jogopervasivo.webServices;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -11,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import br.ufc.great.arviewer.android.R;
-import br.great.jogopervasivo.actvititesDoJogo.InstanciasExecutandoActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.InstanciasExecutandoActivity;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
 
@@ -22,10 +23,10 @@ import br.great.jogopervasivo.util.InformacoesTemporarias;
  * @version 1.0
  */
 public class CriarNovaInstanciaDeJogo extends AsyncTask<String, Void, Boolean> {
-    private InstanciasExecutandoActivity context;
+    private Context context;
     private ProgressDialog progressDialog;
 
-    public CriarNovaInstanciaDeJogo(InstanciasExecutandoActivity context) {
+    public CriarNovaInstanciaDeJogo(Context context) {
         this.context = context;
     }
 
@@ -84,7 +85,7 @@ public class CriarNovaInstanciaDeJogo extends AsyncTask<String, Void, Boolean> {
                     .setNegativeButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            context.atuaizarLista();
+                           // context.atuaizarLista();
                         }
                     })
                     .create()

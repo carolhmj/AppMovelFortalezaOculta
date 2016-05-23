@@ -1,7 +1,9 @@
 package br.great.jogopervasivo.beans.mecanicas;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -18,7 +20,6 @@ import org.json.JSONObject;
 import java.io.File;
 
 import br.ufc.great.arviewer.android.R;
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -42,7 +43,7 @@ public class VSons extends Mecanica implements Imecanica {
     }
 
     @Override
-    public void realizarMecanica(final TelaPrincipalActivity context) {
+    public void realizarMecanica(final Context context) {
 
 
         if (getEstado()==2){
@@ -87,50 +88,50 @@ public class VSons extends Mecanica implements Imecanica {
             @Override
             protected void onPostExecute(Boolean aBoolean) {
                 progressDialog.dismiss();
-                if (aBoolean) {
-
-                    try {
-
-                        InformacoesTemporarias.jogoOcupado = true;
-                        final File file = new File(Constantes.PASTA_DE_ARQUIVOS, arqSom);
-                        final MediaPlayer musica = MediaPlayer.create(context, Uri.fromFile(file));
-                        View view = context.getLayoutInflater().inflate(R.layout.player_audio, null);
-
-                        final Button button = (Button) view.findViewById(R.id.reproduzir_button);
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                if (musica.isPlaying()) {
-                                    musica.stop();
-                                    button.setText(R.string.reproduzir);
-                                } else {
-                                    musica.start();
-                                    button.setText(R.string.reproduzindo);
-                                }
-
-                            }
-                        });
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                        builder.setNegativeButton(R.string.OK, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                confirmarRealizacao(context, null, null, null);
-                            }
-                        });
-
-                        builder.setTitle(getNome());
-                        builder.setView(view);
-                        builder.setTitle(R.string.app_name);
-                        builder.create().show();
-                    } catch (Exception e) {
-                        Toast.makeText(context.getApplicationContext(),"Erro ao executar o arquivo",Toast.LENGTH_LONG).show();
-                        e.printStackTrace();
-                    }
-
-                } else {
-                    mostarToastFeedback(context);
-                }
+//                if (aBoolean) {
+//
+//                    try {
+//
+//                        InformacoesTemporarias.jogoOcupado = true;
+//                        final File file = new File(Constantes.PASTA_DE_ARQUIVOS, arqSom);
+//                        final MediaPlayer musica = MediaPlayer.create(context, Uri.fromFile(file));
+//                        View view = context.getLayoutInflater().inflate(R.layout.player_audio, null);
+//
+//                        final Button button = (Button) view.findViewById(R.id.reproduzir_button);
+//                        button.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                if (musica.isPlaying()) {
+//                                    musica.stop();
+//                                    button.setText(R.string.reproduzir);
+//                                } else {
+//                                    musica.start();
+//                                    button.setText(R.string.reproduzindo);
+//                                }
+//
+//                            }
+//                        });
+//
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                        builder.setNegativeButton(R.string.OK, new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                confirmarRealizacao(context, null, null, null);
+//                            }
+//                        });
+//
+//                        builder.setTitle(getNome());
+//                        builder.setView(view);
+//                        builder.setTitle(R.string.app_name);
+//                        builder.create().show();
+//                    } catch (Exception e) {
+//                        Toast.makeText(context.getApplicationContext(),"Erro ao executar o arquivo",Toast.LENGTH_LONG).show();
+//                        e.printStackTrace();
+//                    }
+//
+//                } else {
+//                    mostarToastFeedback(context);
+//                }
             }
         }.execute();
     }

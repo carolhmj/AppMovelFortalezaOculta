@@ -1,11 +1,13 @@
 package br.great.jogopervasivo.beans.mecanicas;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
 
-import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+import br.great.jogopervasivo.actvititesDoJogo.Mapa;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Armazenamento;
 import br.ufc.great.arviewer.android.AndroidLauncher;
@@ -38,7 +40,7 @@ public class VObj3d extends Mecanica implements Imecanica {
     }
 
     @Override
-    public void realizarMecanica(final TelaPrincipalActivity context) {
+    public void realizarMecanica(final Context context) {
         if (getEstado() == 2) {
             return;
         }
@@ -90,8 +92,8 @@ public class VObj3d extends Mecanica implements Imecanica {
                     Location location = Armazenamento.resgatarUltimaLocalizacao(context);
                     intent.putExtra("LAT_JOGADOR", location.getLatitude());
                     intent.putExtra("LON_JOGADOR", location.getLongitude());
-                    TelaPrincipalActivity.mecanicaVObj3dAtual = VObj3d.this;
-                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VER_OBJ_3D);
+//                    TelaPrincipalActivity.mecanicaVObj3dAtual = VObj3d.this;
+//                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VER_OBJ_3D);
                 } else {
                     mostarToastFeedback(context);
                 }

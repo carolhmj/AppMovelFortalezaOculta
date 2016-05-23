@@ -1,20 +1,20 @@
-package br.great.jogopervasivo.actvititesDoJogo.activitiesFortalezaOculta;
+package br.great.jogopervasivo.actvititesDoJogo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import br.great.jogopervasivo.util.EfeitoClique;
 import br.ufc.great.arviewer.android.R;
+
 
 public class MenuJogos extends Activity {
     private LinearLayout botaoCaminhada;
     private LinearLayout botaoCooperativo;
     private LinearLayout outro;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,5 +62,7 @@ public class MenuJogos extends Activity {
         builder.create().show();
     }
 
-
+    public void abrirMapa(View view){
+        startActivity(new Intent(this,Mapa.class));
+    }
 }

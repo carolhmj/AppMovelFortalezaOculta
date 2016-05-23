@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -14,7 +16,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import br.great.jogopervasivo.LoginActivity;
 import br.great.jogopervasivo.util.Armazenamento;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -61,8 +62,8 @@ public class DownloadImagem extends AsyncTask<String, Void, Bitmap> {
      */
     public Bitmap downloadImagemSincrono(String imagemNome) throws StackOverflowError, IOException {
 
-        Log.i(Constantes.TAG,"Baixando foto:" + imagemNome+ " em "+ Armazenamento.resgatarIPArquivos(LoginActivity.getInstance()) + "cfotos/" + imagemNome);
-        URL url = new URL(Armazenamento.resgatarIPArquivos(LoginActivity.getInstance()) + "cfotos/" + imagemNome);
+        Log.i(Constantes.TAG,"Baixando foto:" + imagemNome+ " em "+ Armazenamento.resgatarIPArquivos(InformacoesTemporarias.contextoTelaPrincipal) + "cfotos/" + imagemNome);
+        URL url = new URL(Armazenamento.resgatarIPArquivos(InformacoesTemporarias.contextoTelaPrincipal) + "cfotos/" + imagemNome);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         InputStream input = connection.getInputStream();
         Bitmap img = BitmapFactory.decodeStream(input);

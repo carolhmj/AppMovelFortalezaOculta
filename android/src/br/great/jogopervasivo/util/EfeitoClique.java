@@ -1,4 +1,4 @@
-package br.great.jogopervasivo.actvititesDoJogo.activitiesFortalezaOculta;
+package br.great.jogopervasivo.util;
 
 import android.content.Context;
 import android.view.MotionEvent;

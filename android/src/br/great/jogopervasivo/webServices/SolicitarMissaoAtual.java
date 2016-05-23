@@ -57,7 +57,7 @@ public class SolicitarMissaoAtual extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        InformacoesTemporarias.contextoTelaPrincipal.mostrarMecanicas();
+       // InformacoesTemporarias.contextoTelaPrincipal.mostrarMecanicas();
     }
 
     public void solicitarSincrono() {

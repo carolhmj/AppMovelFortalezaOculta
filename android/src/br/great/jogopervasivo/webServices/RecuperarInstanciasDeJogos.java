@@ -2,6 +2,7 @@ package br.great.jogopervasivo.webServices;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufc.great.arviewer.android.R;
-import br.great.jogopervasivo.actvititesDoJogo.InstanciasExecutandoActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.InstanciasExecutandoActivity;
 import br.great.jogopervasivo.arrayAdapters.InstanciasExecutandoAdapter;
 import br.great.jogopervasivo.beans.InstanciaDeJogo;
 import br.great.jogopervasivo.util.Constantes;
@@ -29,11 +30,11 @@ import br.great.jogopervasivo.util.Constantes;
  */
 public class RecuperarInstanciasDeJogos extends AsyncTask<Integer, Void, List<InstanciaDeJogo>> {
 
-    private InstanciasExecutandoActivity context;
+    private Context context;
     private ProgressDialog progressDialog;
     private ListView lista;
 
-    public RecuperarInstanciasDeJogos(InstanciasExecutandoActivity context, ListView lista) {
+    public RecuperarInstanciasDeJogos(Context context, ListView lista) {
         this.context = context;
         this.lista = lista;
     }
@@ -103,7 +104,7 @@ public class RecuperarInstanciasDeJogos extends AsyncTask<Integer, Void, List<In
                     .setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            context.finish();
+//                            context.finish();
                         }
                     })
                     .create()

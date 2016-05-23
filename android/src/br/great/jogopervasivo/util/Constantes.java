@@ -2,7 +2,7 @@ package br.great.jogopervasivo.util;
 
 import android.os.Environment;
 
-import br.great.jogopervasivo.actvititesDoJogo.ConfiguracoesActivity;
+//import br.great.jogopervasivo.actvititesDoJogo.ConfiguracoesActivity;
 
 /**
  * Created by messiaslima on 02/02/2015.
@@ -10,6 +10,10 @@ import br.great.jogopervasivo.actvititesDoJogo.ConfiguracoesActivity;
  * @author messiaslima
  */
 public class Constantes {
+
+    public static final String TAG_CONFIGURACAO_IP ="ip";
+    public static final String TAG_CONFIGURACAO_PORTA ="porta";
+    public static final String TAG_CONFIGURACAO_IP_ARQUIVOS ="ipArquivos";
 
     public static final String SERVIDOR_DE_APLICACAO = "http://200.129.43.207:8083";
     public static final String SERVIDOR_DE_ARQUIVOS = "http://200.129.43.207/pervasivedb/";
