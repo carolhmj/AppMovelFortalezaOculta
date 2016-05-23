@@ -37,7 +37,7 @@ public class CadastrarNovoUsuario extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        return Servidor.fazerGet("/jogador/cadastrarJogador?email=" + params[0] + "&password=" + params[1]);
+        return Servidor.fazerGet("/jogador/cadastrarJogador?email=" + params[0] + "&password=" + params[1],contexto);
     }
 
     @Override

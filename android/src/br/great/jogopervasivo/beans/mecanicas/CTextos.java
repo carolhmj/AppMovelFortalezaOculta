@@ -79,7 +79,7 @@ public class CTextos extends Mecanica implements Imecanica {
                     return false;
                 }*/
 
-                return verificarAutorizacaoDaMecanica();
+                return verificarAutorizacaoDaMecanica(context);
             }
 
             @Override

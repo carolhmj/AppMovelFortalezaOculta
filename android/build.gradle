@@ -16,6 +16,7 @@ android {
     }
     defaultConfig {
         minSdkVersion 15
+        applicationId "br.ufc.great.arviewer.android"
     }
     productFlavors {
     }

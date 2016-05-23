@@ -133,7 +133,7 @@ public class InicializarJogo extends AsyncTask<Void, String, Boolean> {
             je.printStackTrace();
         }
 
-        String resposta = Servidor.fazerGet(jsonArrayReq.toString());
+        String resposta = Servidor.fazerGet(jsonArrayReq.toString(),context);
         if (resposta.equals("[{\"result\":\"true\"}]")) {
             return true;
         } else {
@@ -161,7 +161,7 @@ public class InicializarJogo extends AsyncTask<Void, String, Boolean> {
             je.printStackTrace();
         }
 
-        String resposta = Servidor.fazerGet(jsonArrayReq.toString());
+        String resposta = Servidor.fazerGet(jsonArrayReq.toString(),context);
 
         if (resposta.equals("[[]]")) {//Se não tiver nenhum arquivo a ser baixado
             return true;

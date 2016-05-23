@@ -93,7 +93,7 @@ public class CSons extends Mecanica implements Imecanica {
                     return false;
                 }*/
 
-                return verificarAutorizacaoDaMecanica();
+                return verificarAutorizacaoDaMecanica(context);
             }
 
 

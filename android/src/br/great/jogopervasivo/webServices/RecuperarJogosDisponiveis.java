@@ -63,7 +63,7 @@ public class RecuperarJogosDisponiveis extends AsyncTask<String, Void, String> {
         } catch (JSONException je) {
             je.printStackTrace();
         }
-        return Servidor.fazerGet(jsonArray.toString());
+        return Servidor.fazerGet(jsonArray.toString(),context);
 
     }
 

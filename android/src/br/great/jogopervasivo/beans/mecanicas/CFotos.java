@@ -72,7 +72,7 @@ public class CFotos extends Mecanica implements Imecanica {
                     return false;
                 }*/
 
-                return verificarAutorizacaoDaMecanica();
+                return verificarAutorizacaoDaMecanica(context);
             }
 
 

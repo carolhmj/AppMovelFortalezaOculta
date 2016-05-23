@@ -22,30 +22,13 @@ import br.great.jogopervasivo.util.InformacoesTemporarias;
  * @since 1.0
  * @version 1.0
  */
-public class CriarNovaInstanciaDeJogo extends AsyncTask<String, Void, Boolean> {
+public class CriarNovaInstanciaDeJogo  {
     private Context context;
     private ProgressDialog progressDialog;
 
     public CriarNovaInstanciaDeJogo(Context context) {
         this.context = context;
     }
-
-    public CriarNovaInstanciaDeJogo(){}
-
-    @Override
-    protected void onPreExecute() {
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage(context.getString(R.string.salvando));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
-
-
-    @Override
-    protected Boolean doInBackground(String... params) {
-       return criar(params);
-    }
-
 
     public boolean criar(String... params){
         JSONArray jsonArrayReq = new JSONArray();
@@ -63,7 +46,7 @@ public class CriarNovaInstanciaDeJogo extends AsyncTask<String, Void, Boolean> {
             je.printStackTrace();
         }
 
-        String resposta = Servidor.fazerGet(jsonArrayReq.toString());
+        String resposta = Servidor.fazerGet(jsonArrayReq.toString(),context);
 
         try {
             JSONArray jsonArray = new JSONArray(resposta);
@@ -75,28 +58,4 @@ public class CriarNovaInstanciaDeJogo extends AsyncTask<String, Void, Boolean> {
         }
     }
 
-    @Override
-    protected void onPostExecute(Boolean aBoolean) {
-        progressDialog.dismiss();
-        AlertDialog.Builder builder = new ProgressDialog.Builder(context);
-        if (aBoolean) {
-
-            builder.setMessage(context.getString(R.string.jogo_criado))
-                    .setNegativeButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                           // context.atuaizarLista();
-                        }
-                    })
-                    .create()
-                    .show();
-
-        } else {
-
-            builder.setMessage(context.getString(R.string.falha_de_conexao))
-                    .setNegativeButton(context.getString(R.string.OK), null)
-                    .create()
-                    .show();
-        }
-    }
 }

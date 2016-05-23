@@ -129,7 +129,7 @@ public class ObjetoInventario {
                             je.printStackTrace();
                         }
 
-                        return Servidor.fazerGet(requisiscao.toString());
+                        return Servidor.fazerGet(requisiscao.toString(),context);
 
                     }
 

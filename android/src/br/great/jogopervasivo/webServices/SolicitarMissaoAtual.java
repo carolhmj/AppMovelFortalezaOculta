@@ -86,7 +86,7 @@ public class SolicitarMissaoAtual extends AsyncTask<Void, Void, Void> {
                 je.printStackTrace();
             }
 
-            String resposta = Servidor.fazerGet(jsonArrayReq.toString());
+            String resposta = Servidor.fazerGet(jsonArrayReq.toString(),context);
             if (resposta.equals("")) {
                 new SolicitarMissaoAtual(context).execute();
             } else {

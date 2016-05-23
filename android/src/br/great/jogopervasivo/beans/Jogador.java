@@ -114,7 +114,7 @@ public class Jogador {
                     je.printStackTrace();
                 }
 
-                String resposta = Servidor.fazerGet(jsonArrayReq.toString());
+                String resposta = Servidor.fazerGet(jsonArrayReq.toString(),context);
                 return resposta.contains("true");
             }
 

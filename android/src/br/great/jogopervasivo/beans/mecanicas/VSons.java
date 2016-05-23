@@ -82,7 +82,7 @@ public class VSons extends Mecanica implements Imecanica {
                     je.printStackTrace();
                     return false;
                 }*/
-                return verificarAutorizacaoDaMecanica();
+                return verificarAutorizacaoDaMecanica(context);
             }
 
             @Override

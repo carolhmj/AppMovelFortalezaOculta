@@ -21,7 +21,7 @@ import br.great.jogopervasivo.util.InformacoesTemporarias;
 public class RecuperarObjetosInventario {
 
 
-    public static void recuperar(Context context) {
+    public static void recuperar(final Context context) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -39,7 +39,7 @@ public class RecuperarObjetosInventario {
                     e.printStackTrace();
                 }
 
-                String resposta = Servidor.fazerGet(jsonArray.toString());
+                String resposta = Servidor.fazerGet(jsonArray.toString(),context);
                 // Se a resposta veio vazia. Erro de conexao com a internet
 
                 if (!(resposta.trim().length() == 0)) {

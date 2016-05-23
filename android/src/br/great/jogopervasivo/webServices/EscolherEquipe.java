@@ -60,7 +60,7 @@ public class EscolherEquipe extends AsyncTask<Integer, Void, List<Grupo>> {
             je.printStackTrace();
         }
 
-        String resposta = Servidor.fazerGet(jsonArrayReq.toString());
+        String resposta = Servidor.fazerGet(jsonArrayReq.toString(),context);
         try {
             JSONArray jsonArray = new JSONArray(resposta).getJSONArray(0);
             List<Grupo> grupos = new ArrayList<>();

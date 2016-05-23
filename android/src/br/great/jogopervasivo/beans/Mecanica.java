@@ -248,7 +248,7 @@ public class Mecanica {
                 } catch (JSONException je) {
                 }
 
-                String resposta = Servidor.fazerGet(array.toString());
+                String resposta = Servidor.fazerGet(array.toString(),context);
 
                 /*na resposta vem:
                 * O life do jogador  e lista de objetos no inventario
@@ -337,7 +337,7 @@ public class Mecanica {
     /**
      * Verifica no servidor, se a mecânica poderá ser realizada pelo jogador nesse momento
      */
-    public boolean verificarAutorizacaoDaMecanica() {
+    public boolean verificarAutorizacaoDaMecanica(Context context) {
         JSONObject acao = new JSONObject();
         JSONObject mecanica = new JSONObject();
         JSONArray requisiscao = new JSONArray();
@@ -349,7 +349,7 @@ public class Mecanica {
             mecanica.put("jogador_id", InformacoesTemporarias.idJogador);
             requisiscao.put(0, acao);
             requisiscao.put(1, mecanica);
-            JSONObject resposta = new JSONArray(Servidor.fazerGet(requisiscao.toString())).getJSONObject(0);
+            JSONObject resposta = new JSONArray(Servidor.fazerGet(requisiscao.toString(),context)).getJSONObject(0);
             nivelDeAutorizacaoDeRealizacao = resposta.getInt("result");
             if (resposta.getInt("result") == 0 || resposta.getInt("result") == 3) {
                 return false;

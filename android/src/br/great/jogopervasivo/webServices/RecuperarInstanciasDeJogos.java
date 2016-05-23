@@ -28,28 +28,16 @@ import br.great.jogopervasivo.util.Constantes;
  * @version 1.0
  * @since 1.0
  */
-public class RecuperarInstanciasDeJogos extends AsyncTask<Integer, Void, List<InstanciaDeJogo>> {
+public class RecuperarInstanciasDeJogos {
 
     private Context context;
-    private ProgressDialog progressDialog;
-    private ListView lista;
 
-    public RecuperarInstanciasDeJogos(Context context, ListView lista) {
+    public RecuperarInstanciasDeJogos(Context context) {
         this.context = context;
-        this.lista = lista;
     }
 
 
-    @Override
-    protected void onPreExecute() {
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage(context.getString(R.string.obtendo_informacoes));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
-
-    @Override
-    protected List<InstanciaDeJogo> doInBackground(Integer... params) {
+    public List<InstanciaDeJogo> recuperar(Integer... params) {
         JSONArray jsonArrayReq = new JSONArray();
         JSONObject jsonObjectReq = new JSONObject();
         JSONObject jsonObject1Req = new JSONObject();
@@ -63,7 +51,7 @@ public class RecuperarInstanciasDeJogos extends AsyncTask<Integer, Void, List<In
         } catch (JSONException je) {
             je.printStackTrace();
         }
-        String resposta = Servidor.fazerGet(jsonArrayReq.toString());
+        String resposta = Servidor.fazerGet(jsonArrayReq.toString(),context);
         try {
             JSONArray jsonArray = new JSONArray(resposta);
             List<InstanciaDeJogo> instancias = new ArrayList<>();
@@ -95,23 +83,4 @@ public class RecuperarInstanciasDeJogos extends AsyncTask<Integer, Void, List<In
     }
 
 
-    @Override
-    protected void onPostExecute(List<InstanciaDeJogo> instanciaDeJogos) {
-        progressDialog.dismiss();
-        if (instanciaDeJogos == null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setMessage(context.getString(R.string.falha_de_conexao))
-                    .setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-//                            context.finish();
-                        }
-                    })
-                    .create()
-                    .show();
-        } else {
-            InstanciasExecutandoAdapter adapter = new InstanciasExecutandoAdapter(context, R.layout.instancia_executando_item_lista, instanciaDeJogos);
-            lista.setAdapter(adapter);
-        }
-    }
 }
