@@ -63,15 +63,19 @@ public class InicializarJogo extends AsyncTask<Void, String, Boolean> {
 
     @Override
     protected void onProgressUpdate(String... values) {
-        progressDialog.setMessage(values[0]);
-        if (values[1] != null) {
-            progressDialog.setProgress(Integer.parseInt(values[1]));
-        }
+//      //  progressDialog.setMessage(values[0]);
+//        if (values[1] != null) {
+//            progressDialog.setProgress(Integer.parseInt(values[1]));
+//        }
     }
 
 
     @Override
     protected Boolean doInBackground(Void... params) {
+       return inicializar();
+    }
+
+    public boolean inicializar(){
         boolean resposta;
         if (jogo.getGrupoId() == 0) {
             resposta = baixarArquivosIniciais();//Primeiro tenta baixar os arquivos necessarios pra inicialização do jogo
@@ -83,7 +87,7 @@ public class InicializarJogo extends AsyncTask<Void, String, Boolean> {
         Log.i(Constantes.TAG, "Terminou de baixar os arquivos");
         //Caso não dê nenhum erro ele registra o jogador no jogo no servidor
 
-        publishProgress(context.getString(R.string.registrando_jogador), null);
+       // publishProgress(context.getString(R.string.registrando_jogador), null);
         resposta = registrarJogadorNoJogo();
         if (resposta) {
             return resposta;
@@ -198,8 +202,8 @@ public class InicializarJogo extends AsyncTask<Void, String, Boolean> {
                 }
             }
 
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL); //Muda o ProgressDialog para barra de progresso
-            progressDialog.setMax(arquivosPrioritarios.size()); //Muda o tamanho máximo da barra
+            //progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL); //Muda o ProgressDialog para barra de progresso
+            //progressDialog.setMax(arquivosPrioritarios.size()); //Muda o tamanho máximo da barra
 
             for (Arquivo a : arquivosPrioritarios) {
                 //Toda vez que ele inicia um download de arquivo, aumenta o numero da barra

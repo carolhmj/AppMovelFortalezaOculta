@@ -76,9 +76,11 @@ public class Armazenamento {
         Location localizacao = new Location(LocationManager.GPS_PROVIDER);
         localizacao.setLatitude(latitude);
         localizacao.setLongitude(longitude);
+
         if (latitude == 0 && longitude == 0) {
             return null;
         }
+
         return localizacao;
     }
 

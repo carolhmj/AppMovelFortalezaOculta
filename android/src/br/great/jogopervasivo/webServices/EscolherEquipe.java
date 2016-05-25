@@ -46,6 +46,10 @@ public class EscolherEquipe extends AsyncTask<Integer, Void, List<Grupo>> {
 
     @Override
     protected List<Grupo> doInBackground(Integer... params) {
+      return recuperarGrupos(params);
+    }
+
+    public List<Grupo> recuperarGrupos(Integer... params){
         JSONArray jsonArrayReq = new JSONArray();
         JSONObject jsonObjectReq = new JSONObject();
         JSONObject jsonObject1Req = new JSONObject();

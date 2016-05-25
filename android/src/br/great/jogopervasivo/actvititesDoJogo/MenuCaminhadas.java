@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -14,13 +15,18 @@ import android.widget.LinearLayout;
 import java.util.List;
 
 import br.great.jogopervasivo.arrayAdapters.ListarMecanicasAdapter;
+import br.great.jogopervasivo.beans.Grupo;
 import br.great.jogopervasivo.beans.InstanciaDeJogo;
 import br.great.jogopervasivo.beans.Jogo;
+import br.great.jogopervasivo.util.Armazenamento;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.EfeitoClique;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
 import br.great.jogopervasivo.webServices.CriarNovaInstanciaDeJogo;
+import br.great.jogopervasivo.webServices.EscolherEquipe;
+import br.great.jogopervasivo.webServices.InicializarJogo;
 import br.great.jogopervasivo.webServices.RecuperarInstanciasDeJogos;
+import br.great.jogopervasivo.webServices.RecuperarObjetosInventario;
 import br.ufc.great.arviewer.android.R;
 
 
@@ -84,7 +90,20 @@ public class MenuCaminhadas extends Activity {
 
                             //Recupera instancia com o  mesmo Device ID
                             if (i.getNomeFicticio().equals(deviceId)){
-
+                                EscolherEquipe escolherEquipe =  new EscolherEquipe(MenuCaminhadas.this);
+                                List<Grupo> grupos = escolherEquipe.recuperarGrupos(i.getId());
+                                InformacoesTemporarias.instanciaDeJogo = i;
+                                InformacoesTemporarias.grupo =  grupos.get(0);
+                                Location localizacao = Armazenamento.resgatarUltimaLocalizacao(MenuCaminhadas.this);
+                                InicializarJogo inicializarJogo = new InicializarJogo(MenuCaminhadas.this,InformacoesTemporarias.instanciaDeJogo,InformacoesTemporarias.grupo, localizacao.getLatitude(),localizacao.getLongitude());
+                                inicializarJogo.inicializar();
+                                Log.i(Constantes.TAG,"Inicializando o jogo");
+                                InformacoesTemporarias.jogoAtual = i;
+                                InformacoesTemporarias.grupoAtual = grupos.get(0);
+                                Armazenamento.salvar(Constantes.JOGO_EXECUTANDO, true, MenuCaminhadas.this);//Diz que tem jogo executando;
+                                finish(); //Faz casting do Context para activity  e fecha a janela.
+                                RecuperarObjetosInventario.recuperar(MenuCaminhadas.this);
+                                startActivity(new Intent(MenuCaminhadas.this,Mapa.class));
                             }
                         }
 
@@ -92,8 +111,6 @@ public class MenuCaminhadas extends Activity {
                     }
                 }.execute();
 
-
-                //startActivity(new Intent(MenuCaminhadas.this,Mapa.class));
             }
         });
 

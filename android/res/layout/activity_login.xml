@@ -22,6 +22,7 @@
         <EditText
             android:id="@+id/login_login_edit_text"
             android:layout_width="match_parent"
+            android:textColor="@color/ab_color"
             android:layout_height="wrap_content"
             android:textColorHint="@color/ab_color"
             android:padding="@dimen/edit_text_padding"
@@ -38,6 +39,7 @@
             android:textColor="@color/ab_color"
             android:hint="@string/senha"/>
         <TextView
+            android:id="@+id/aindaNaoCadastradoTextView"
             android:layout_gravity="center"
             android:textSize="@dimen/texto_pequeno_FO"
             android:layout_width="wrap_content"
@@ -47,6 +49,7 @@
         <Button
             android:layout_marginTop="@dimen/padding_ab"
             android:layout_gravity="center"
+            android:onClick="fazerLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/texto_grande"

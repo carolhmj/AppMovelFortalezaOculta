@@ -115,8 +115,8 @@ public class Servidor {
                 InformacoesTemporarias.nomeJogador = jsonObject.optString("email", contexto.getString(R.string.desconhecido));
                 String idDispositivo = "";
                 idDispositivo = jsonObject.optString("idDispositivo", "");
-               // InicializarGCM initGcm = new InicializarGCM(contexto, idDispositivo);
-               // initGcm.inicializar(); //inicializa o serviço de GCM , testa se está ativo ou não
+                InicializarGCM initGcm = new InicializarGCM(contexto, idDispositivo);
+                initGcm.inicializar(); //inicializa o serviço de GCM , testa se está ativo ou não
                 return gerarResultado(true, "");
             }
         }
