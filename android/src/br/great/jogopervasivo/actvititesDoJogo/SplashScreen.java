@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.webkit.WebView;
 import android.widget.ImageView;
 
 import br.great.jogopervasivo.util.SobrescreverFonte;
@@ -12,7 +13,7 @@ import br.ufc.great.arviewer.android.R;
 
 public class SplashScreen extends Activity {
 
-    private ImageView animacaoImageView;
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +24,9 @@ public class SplashScreen extends Activity {
     }
 
     private void iniciarComponentes() {
-        animacaoImageView = (ImageView) findViewById(R.id.animacao_image_view);
-        animacaoImageView.setBackgroundResource(R.drawable.animacao_entrada);
-
-        AnimationDrawable animationDrawable = (AnimationDrawable) animacaoImageView.getBackground();
-        animationDrawable.start();
-
-
+        webView = (WebView) findViewById(R.id.webViewAnimacao);
+        webView.loadUrl("file:///android_asset/htmls/animacao.html");
+        webView.setSaveEnabled(false);
     }
 
     @Override
@@ -42,7 +39,7 @@ public class SplashScreen extends Activity {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    Thread.sleep(1500);
+                    Thread.sleep(5*1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -51,7 +48,7 @@ public class SplashScreen extends Activity {
 
             @Override
             protected void onPostExecute(Void aVoid) {
-                startActivity(new Intent(SplashScreen.this, MenuJogos.class));
+                startActivity(new Intent(SplashScreen.this, LoginActivity.class));
                 finish();
             }
         }.execute();

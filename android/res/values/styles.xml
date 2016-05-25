@@ -10,5 +10,11 @@
         <item name="android:textColor">@color/texto</item>
         <item name="android:textSize">@dimen/texto_padrao_FO</item>
         <item name="android:typeface">sans</item>
+        <item name="android:editTextBackground">@color/view_color</item>
+        <item name="android:buttonStyle">@style/ButtonAppTheme</item>
+    </style>
+
+    <style name="ButtonAppTheme" parent="android:Widget.Holo.Light.Button">
+        <item name="android:background">@drawable/roundedbutton</item>
     </style>
 </resources>

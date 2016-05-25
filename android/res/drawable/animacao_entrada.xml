@@ -6,11 +6,4 @@
     <item android:drawable="@drawable/a3" android:duration="@integer/frameRateAnimacao" />
     <item android:drawable="@drawable/a4" android:duration="@integer/frameRateAnimacao" />
     <item android:drawable="@drawable/a5" android:duration="@integer/frameRateAnimacao" />
-    <item android:drawable="@drawable/a6" android:duration="@integer/frameRateAnimacao" />
-    <item android:drawable="@drawable/a7" android:duration="@integer/frameRateAnimacao" />
-    <item android:drawable="@drawable/a8" android:duration="@integer/frameRateAnimacao" />
-    <item android:drawable="@drawable/a9" android:duration="@integer/frameRateAnimacao" />
-    <item android:drawable="@drawable/a10" android:duration="@integer/frameRateAnimacao" />
-    <item android:drawable="@drawable/a11" android:duration="@integer/frameRateAnimacao" />
-    <item android:drawable="@drawable/a12" android:duration="@integer/frameRateAnimacao" />
 </animation-list>

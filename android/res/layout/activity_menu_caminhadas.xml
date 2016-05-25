@@ -4,41 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundoTelaEscuro"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.great.jogopervasivo.actvititesDoJogo.MenuCaminhadas">
 
-    <TextView
-        android:id="@+id/menu_caminhadas_titulo"
-        android:layout_width="wrap_content"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="20dp"
-        android:text="@string/caminhadas" />
+        android:background="@color/ab_color"
+        android:padding="@dimen/padding_ab">
+
+        <TextView
+            android:id="@+id/menu_caminhadas_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/caminhadas" />
+    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/list_menu_margin_top"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/menu_caminhadas_botao_bode"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:paddingTop="@dimen/list_item_vertical_padding"
+            android:paddingBottom="@dimen/list_item_vertical_padding"
+            android:paddingStart="@dimen/list_item_horizontal_padding">
 
             <ImageView
-                android:layout_width="@dimen/tamanho_icone_menu"
-                android:layout_height="@dimen/tamanho_icone_menu"
-                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/list_item_horizontal_padding"
                 android:adjustViewBounds="true"
-                android:src="@drawable/bode_logo" />
+                android:src="@mipmap/caminhada_bode_logo" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,18 +59,20 @@
 
         <LinearLayout
             android:id="@+id/menu_caminhadas_botao_calungueira"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:paddingTop="@dimen/list_item_vertical_padding"
+            android:paddingBottom="@dimen/list_item_vertical_padding"
+            android:paddingStart="@dimen/list_item_horizontal_padding">
 
             <ImageView
-                android:layout_width="@dimen/tamanho_icone_menu"
-                android:layout_height="@dimen/tamanho_icone_menu"
-                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/list_item_horizontal_padding"
                 android:adjustViewBounds="true"
-                android:src="@drawable/calung_logo" />
+                android:src="@mipmap/caminhada_calungueira_logo" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,22 +80,24 @@
                 android:text="@string/calungueira" />
         </LinearLayout>
 
-        <include layout="@layout/separator"/>
+        <include layout="@layout/separator" />
 
         <LinearLayout
             android:id="@+id/menu_caminhadas_botao_gato"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:paddingTop="@dimen/list_item_vertical_padding"
+            android:paddingBottom="@dimen/list_item_vertical_padding"
+            android:paddingStart="@dimen/list_item_horizontal_padding">
 
             <ImageView
-                android:layout_width="@dimen/tamanho_icone_menu"
-                android:layout_height="@dimen/tamanho_icone_menu"
-                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/list_item_horizontal_padding"
                 android:adjustViewBounds="true"
-                android:src="@drawable/gato_logo" />
+                android:src="@mipmap/caminhada_gato_logo" />
 
             <TextView
                 android:layout_width="wrap_content"

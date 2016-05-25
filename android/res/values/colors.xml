@@ -4,4 +4,6 @@
     <color name="fundoTelaEscuro">#494848</color>
     <color name="texto">#fff</color>
     <color name="realce_botao">#ecede6</color>
+    <color name="ab_color">#3a3939</color>
+    <color name="view_color">#bdd3ba</color>
 </resources>

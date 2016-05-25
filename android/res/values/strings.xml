@@ -17,7 +17,7 @@
     <string name="mostrar_tudo">Mostrar todas</string>
     <string name="falha_de_conexao">Falha na conexão com o servidor</string>
     <string name="falha_de_autenticacao">Usuário ou senha inválidos</string>
-    <string name="ainda_nao_cadastrado"><u>Ainda não sou cadastrado</u></string>
+    <string name="ainda_nao_cadastrado">Ainda não sou cadastrado</string>
     <string name="title_activity_novo_usuario" translatable="false">Cadastrar novo usuário</string>
     <string name="redigite_senha">Digite a senha novamente</string>
     <string name="novo_usuario">Novo usuário</string>
