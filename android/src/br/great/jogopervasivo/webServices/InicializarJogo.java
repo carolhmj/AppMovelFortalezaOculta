@@ -207,7 +207,7 @@ public class InicializarJogo extends AsyncTask<Void, String, Boolean> {
 
             for (Arquivo a : arquivosPrioritarios) {
                 //Toda vez que ele inicia um download de arquivo, aumenta o numero da barra
-                progressDialog.setProgress(progressDialog.getProgress() + 1);
+                //progressDialog.setProgress(progressDialog.getProgress() + 1);
                 boolean problemaDeRede = a.baixar(context); //Inicia o download
                 if (!problemaDeRede) {
                     return false;

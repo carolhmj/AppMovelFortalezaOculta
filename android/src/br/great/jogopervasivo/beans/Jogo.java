@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Jogo {
 
-    public static final int CAMINHADA_BODE = 548;
+    public static final int CAMINHADA_BODE = 549;
     public static final int CAMINHADA_CALUNG = 2;
     public static final int CAMINHADA_GATO = 3;
 

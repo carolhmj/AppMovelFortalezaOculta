@@ -101,9 +101,10 @@ public class MenuCaminhadas extends Activity {
                                 InformacoesTemporarias.jogoAtual = i;
                                 InformacoesTemporarias.grupoAtual = grupos.get(0);
                                 Armazenamento.salvar(Constantes.JOGO_EXECUTANDO, true, MenuCaminhadas.this);//Diz que tem jogo executando;
-                                finish(); //Faz casting do Context para activity  e fecha a janela.
                                 RecuperarObjetosInventario.recuperar(MenuCaminhadas.this);
                                 startActivity(new Intent(MenuCaminhadas.this,Mapa.class));
+                                finish(); //Faz casting do Context para activity  e fecha a janela.
+                                return true;
                             }
                         }
 

@@ -1,5 +1,6 @@
 package br.great.jogopervasivo.util;
 
+import android.Manifest;
 import android.os.Environment;
 
 //import br.great.jogopervasivo.actvititesDoJogo.ConfiguracoesActivity;
@@ -57,5 +58,9 @@ public class Constantes {
     public static final String TIPO_MECANICA_DTEXTOS = "dtextos";
     public static final int LIMIAR_DE_PROXIMIDADE = 20;
 
-
+    public static final String[] listaDePermissoes = new String[]{
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.READ_EXTERNAL_STORAGE};
 }

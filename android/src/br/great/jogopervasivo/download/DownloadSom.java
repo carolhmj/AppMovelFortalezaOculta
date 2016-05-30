@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import br.great.jogopervasivo.actvititesDoJogo.LoginActivity;
 import br.great.jogopervasivo.util.Armazenamento;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -30,8 +31,8 @@ public class DownloadSom extends AsyncTask<Void, Void, File> {
 
     public File downloadSomSincrono() throws IOException {
         File som = InformacoesTemporarias.criarAudioTemporario();
-        Log.i(Constantes.TAG,"Baixando audio:" + arquivo+ " em "+ Armazenamento.resgatarIPArquivos(InformacoesTemporarias.contextoTelaPrincipal) + "csons/" + arquivo);
-        URL url = new URL(Armazenamento.resgatarIPArquivos(InformacoesTemporarias.contextoTelaPrincipal)+ "csons/" + arquivo);
+        Log.i(Constantes.TAG,"Baixando audio:" + arquivo+ " em "+ Armazenamento.resgatarIPArquivos(LoginActivity.getInstancia()) + "csons/" + arquivo);
+        URL url = new URL(Armazenamento.resgatarIPArquivos(LoginActivity.getInstancia())+ "csons/" + arquivo);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         InputStream input = connection.getInputStream();
         FileOutputStream fos = new FileOutputStream(som);

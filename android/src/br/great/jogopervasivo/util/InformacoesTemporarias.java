@@ -56,7 +56,7 @@ public class InformacoesTemporarias {
 
 
     public static void verificarDistanciaJogadores() {
-       /* if (grupoAtual.getTipoJogador() == Jogador.TIPO_CAPTURADOR) {
+        if (grupoAtual.getTipoJogador() == Jogador.TIPO_CAPTURADOR) {
             Location localizacaoJogador = Armazenamento.resgatarUltimaLocalizacao(contextoTelaPrincipal);
             for (Grupo grupo : grupos) {
                 if (grupo.getId() != grupoAtual.getId()) {
@@ -74,7 +74,7 @@ public class InformacoesTemporarias {
                     }
                 }
             }
-        }*/
+        }
     }
 
 

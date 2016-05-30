@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import br.great.jogopervasivo.actvititesDoJogo.Mapa;
 import br.great.jogopervasivo.beans.mecanicas.Imecanica;
 import br.great.jogopervasivo.util.Armazenamento;
 import br.great.jogopervasivo.util.Constantes;
@@ -296,7 +297,7 @@ public class Mecanica {
                         setRealizada(true);
                         RecuperarObjetosInventario.recuperar(context);
 //                        TelaPrincipalActivity.atualizarVida();
-//                        InformacoesTemporarias.contextoTelaPrincipal.transicaoMarcador(getNome());
+                        Mapa.getInstancia().transicaoMarcador(getNome());
                     }
                 } catch (JSONException e) {
                     //Limita o número de tentativas de conexão, para não entrar em "looping"

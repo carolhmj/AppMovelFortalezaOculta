@@ -42,7 +42,7 @@ public class Servidor {
         try {
             //URL url = new URL(Constantes.SERVIDOR_DE_APLICACAO + uri + json);
             URL url = new URL("http", Armazenamento.resgatarIP(context), Armazenamento.resgatarPorta(context), uri + json);
-            Log.i(Constantes.TAG, Armazenamento.resgatarIP(context)+":"+Armazenamento.resgatarPorta(context)+ uri + json);
+            Log.i(Constantes.TAG, Armazenamento.resgatarIP(context) + ":" + Armazenamento.resgatarPorta(context) + uri + json);
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(1000 * 60);
             DataInputStream input = new DataInputStream(connection.getInputStream());
@@ -95,7 +95,7 @@ public class Servidor {
             return gerarResultado(false, contexto.getString(R.string.erro_formatacao_dados));
         }
 
-        String resposta = fazerGet(jsonArray.toString(),contexto);
+        String resposta = fazerGet(jsonArray.toString(), contexto);
         // Se a resposta veio vazia. Erro de conxão com a internet
         if (resposta.trim().length() == 0) {
             return gerarResultado(false, contexto.getString(R.string.falha_de_conexao));
@@ -111,12 +111,18 @@ public class Servidor {
             if (jsonObject.optInt("id", 0) == 0) {
                 return gerarResultado(false, contexto.getString(R.string.falha_de_autenticacao));
             } else {
-                InformacoesTemporarias.idJogador = jsonObject.optInt("id");
-                InformacoesTemporarias.nomeJogador = jsonObject.optString("email", contexto.getString(R.string.desconhecido));
-                String idDispositivo = "";
-                idDispositivo = jsonObject.optString("idDispositivo", "");
-                InicializarGCM initGcm = new InicializarGCM(contexto, idDispositivo);
-                initGcm.inicializar(); //inicializa o serviço de GCM , testa se está ativo ou não
+
+                try {
+                    Log.i("Login", jsonObject.toString());
+                    InformacoesTemporarias.idJogador = jsonObject.getInt("id");
+                    String idDispositivo = "";
+                    idDispositivo = jsonObject.optString("idDispositivo", "");
+                    InicializarGCM initGcm = new InicializarGCM(contexto, idDispositivo);
+                    initGcm.inicializar(); //inicializa o serviço de GCM , testa se está ativo ou não
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return gerarResultado(false, e.getMessage());
+                }
                 return gerarResultado(true, "");
             }
         }
@@ -160,7 +166,7 @@ public class Servidor {
             jsonArray.put(0, acao);
             jsonArray.put(1, parametros);
 
-            String resposta = fazerGet(jsonArray.toString(),context);
+            String resposta = fazerGet(jsonArray.toString(), context);
             JSONObject jsonObject = new JSONArray(resposta).getJSONObject(0);
 
             if (jsonObject.getString("result").equals("Salvo com sucesso!")) {
