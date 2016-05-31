@@ -15,6 +15,7 @@ import android.provider.Settings;
 import br.great.jogopervasivo.actvititesDoJogo.Mapa;
 import br.great.jogopervasivo.util.Armazenamento;
 import br.ufc.great.arviewer.ARViewer;
+import br.ufc.great.arviewer.android.AndroidLauncher;
 import br.ufc.great.arviewer.android.R;
 
 /**
@@ -26,7 +27,7 @@ public class GPSListener implements LocationListener {
 
     private Context context;
     private LocationManager locationManager;
-    private ARViewer visualizadorDeRa;
+    private AndroidLauncher visualizadorDeRa;
     private ProgressDialog progressDialog;
     private Mapa mapa;
     private boolean enableNetWorkProvider;
@@ -56,11 +57,13 @@ public class GPSListener implements LocationListener {
             progressDialog.dismiss();
         }
 
-        if (mapa!=null){
+        if (mapa != null) {
             mapa.novaLocalizacao(location);
         }
 
-
+        if(visualizadorDeRa!=null){
+            visualizadorDeRa.onLocationChanged(location);
+        }
     }
 
     @Override
@@ -82,7 +85,7 @@ public class GPSListener implements LocationListener {
                     , new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            ((Activity)context).finish();
+                            ((Activity) context).finish();
                         }
                     });
             builder.setPositiveButton("Ativar", new DialogInterface.OnClickListener() {
@@ -100,5 +103,7 @@ public class GPSListener implements LocationListener {
         locationManager.removeUpdates(this);
     }
 
-
+    public void setVisualizadorDeRa(AndroidLauncher visualizadorDeRa) {
+        this.visualizadorDeRa = visualizadorDeRa;
+    }
 }

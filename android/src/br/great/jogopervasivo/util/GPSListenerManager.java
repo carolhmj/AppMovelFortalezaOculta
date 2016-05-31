@@ -6,6 +6,7 @@ import br.great.jogopervasivo.GPS.GPSListener;
 
 /**
  * Created by great on 25/05/16.
+ *
  * @author Messias Lima
  */
 public class GPSListenerManager {
@@ -13,9 +14,8 @@ public class GPSListenerManager {
 
     public static GPSListener getGpsListener(Context context) {
         if (gpsListener == null) {
-            return new GPSListener(context);
-        } else {
-            return gpsListener;
+            gpsListener = new GPSListener(context);
         }
+        return gpsListener;
     }
 }

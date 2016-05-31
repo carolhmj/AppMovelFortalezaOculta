@@ -1,5 +1,6 @@
 package br.great.jogopervasivo.beans.mecanicas;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -92,8 +93,8 @@ public class VObj3d extends Mecanica implements Imecanica {
                     Location location = Armazenamento.resgatarUltimaLocalizacao(context);
                     intent.putExtra("LAT_JOGADOR", location.getLatitude());
                     intent.putExtra("LON_JOGADOR", location.getLongitude());
-//                    TelaPrincipalActivity.mecanicaVObj3dAtual = VObj3d.this;
-//                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VER_OBJ_3D);
+                    Mapa.mecanicaVObj3dAtual = VObj3d.this;
+                    ((Activity) context).startActivityForResult(intent, Mapa.REQUEST_CODE_VER_OBJ_3D);
                 } else {
                     mostarToastFeedback(context);
                 }

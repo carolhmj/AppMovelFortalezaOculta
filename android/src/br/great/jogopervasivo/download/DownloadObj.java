@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import br.great.jogopervasivo.actvititesDoJogo.LoginActivity;
 import br.great.jogopervasivo.util.Armazenamento;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -30,8 +31,8 @@ public class DownloadObj extends AsyncTask<Void, Void, File> {
     public File downloadObjSincrono() throws IOException {
 
         obj = InformacoesTemporarias.criarObjTemporario();
-        Log.i(Constantes.TAG, "Baixando obj:" + arquivo + " em " + Armazenamento.resgatarIPArquivos(InformacoesTemporarias.contextoTelaPrincipal) + "objeto3d/" + arquivo);
-        URL url = new URL(Armazenamento.resgatarIPArquivos(InformacoesTemporarias.contextoTelaPrincipal) + "objeto3d/" + arquivo);
+        Log.i(Constantes.TAG, "Baixando obj:" + arquivo + " em " + Armazenamento.resgatarIPArquivos(LoginActivity.getInstancia()) + "objeto3d/" + arquivo);
+        URL url = new URL(Armazenamento.resgatarIPArquivos(LoginActivity.getInstancia()) + "objeto3d/" + arquivo);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         InputStream input = connection.getInputStream();
         FileOutputStream fos = new FileOutputStream(obj);
