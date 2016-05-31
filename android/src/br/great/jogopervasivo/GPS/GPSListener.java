@@ -38,7 +38,7 @@ public class GPSListener implements LocationListener {
     public GPSListener(Context context) {
         this.context = context;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, this);
+//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, this);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, this);
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage(context.getString(R.string.ativando_gps));

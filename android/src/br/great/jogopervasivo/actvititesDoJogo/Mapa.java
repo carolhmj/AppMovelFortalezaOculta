@@ -358,7 +358,7 @@ public class Mapa extends Activity {
     }
 
     /**
-     * Testa de a condição atual do jogador satisfaz alguma mecanica
+     * Adiciona os marcadores das mecanicas
      */
     public void mostrarMecanicas() {
         if (InformacoesTemporarias.mecanicasAtuais != null) {

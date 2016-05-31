@@ -1,13 +1,17 @@
 package br.great.jogopervasivo.beans.mecanicas;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +58,7 @@ public class Vfotos extends Mecanica implements Imecanica {
     public void realizarMecanica(final Context context) {
 
 
-        if (getEstado()==2){
+        if (getEstado() == 2) {
             return;
         }
 
@@ -96,31 +100,54 @@ public class Vfotos extends Mecanica implements Imecanica {
             @Override
             protected void onPostExecute(Boolean aBoolean) {
                 progressDialog.dismiss();
-//                if (aBoolean) {
-//
+                if (aBoolean) {
 //                    InformacoesTemporarias.jogoOcupado = true;
 //                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//                    View view = context.getLayoutInflater().inflate(R.layout.vfotos, null);
+//                    View view = ((Activity) context).getLayoutInflater().inflate(R.layout.vfotos, null);
 //                    builder.setView(view);
 //                    builder.setTitle(getNome());
 //                    if (arqImage.trim().length() > 0) {
 //                        ImageView imageView = (ImageView) view.findViewById(R.id.vfotos_imageView);
-//                        imageView.setImageBitmap(BitmapFactory.decodeFile(PASTA_IMAGENS+"/"+ arqImage));
+//                        imageView.setImageBitmap(BitmapFactory.decodeFile(PASTA_IMAGENS + "/" + arqImage));
 //                    } else {
 //                        TextView textView = (TextView) view.findViewById(R.id.vfotos_textView);
 //                        textView.setText(R.string.falha_de_conexao);
 //                    }
-//                    builder.setNegativeButton(R.string.OK, new DialogInterface.OnClickListener() {
+//                    builder.setNegativeButton("hue", new DialogInterface.OnClickListener() {
 //                        @Override
 //                        public void onClick(DialogInterface dialog, int which) {
-//                            confirmarRealizacao(context, null,null,null);
+//                            confirmarRealizacao(context, null, null, null);
 //                        }
 //                    });
-//                    builder.create().show();
-//
-//                } else {
-//                    mostarToastFeedback(context);
-//                }
+//                    AlertDialog alertDialog = builder.create();
+//                    alertDialog.show();
+//                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+                    final Dialog dialog = new Dialog(context);
+
+                    View view = ((Activity) context).getLayoutInflater().inflate(R.layout.vfotos, null);
+                    if (arqImage.trim().length() > 0) {
+                        ImageView imageView = (ImageView) view.findViewById(R.id.vfotos_imageView);
+                        imageView.setImageBitmap(BitmapFactory.decodeFile(PASTA_IMAGENS + "/" + arqImage));
+                        imageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                confirmarRealizacao(context, null, null, null);
+                                dialog.dismiss();
+                            }
+                        });
+                    } else {
+                        TextView textView = (TextView) view.findViewById(R.id.vfotos_textView);
+                        textView.setText(R.string.falha_de_conexao);
+                    }
+
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(view);
+                    dialog.show();
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                } else {
+                    mostarToastFeedback(context);
+                }
             }
         }.execute();
 

@@ -81,6 +81,7 @@ public class MenuCaminhadas extends Activity {
                         progressDialog = new ProgressDialog(MenuCaminhadas.this);
                         progressDialog.setMessage(getString(R.string.obtendo_informacoes));
                         progressDialog.show();
+                        Log.e("MENU CAMINHADA ","Executou onPreExecute");
                     }
 
                     @Override
@@ -126,6 +127,7 @@ public class MenuCaminhadas extends Activity {
                     @Override
                     protected void onPostExecute(Boolean aBoolean) {
                         progressDialog.dismiss();
+                        Log.e("MENU CAMINHADA ","Executou onPostExecute");
                     }
                 }.execute();
 

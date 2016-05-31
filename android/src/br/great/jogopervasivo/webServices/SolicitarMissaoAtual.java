@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.great.jogopervasivo.actvititesDoJogo.Mapa;
 import br.great.jogopervasivo.beans.mecanicas.VObj3d;
 import br.ufc.great.arviewer.android.R;
 import br.great.jogopervasivo.beans.Grupo;
@@ -57,7 +58,7 @@ public class SolicitarMissaoAtual extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-       // InformacoesTemporarias.contextoTelaPrincipal.mostrarMecanicas();
+        Mapa.getInstancia().mostrarMecanicas();
     }
 
     public void solicitarSincrono() {

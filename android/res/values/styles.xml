@@ -17,4 +17,9 @@
     <style name="ButtonAppTheme" parent="android:Widget.Holo.Light.Button">
         <item name="android:background">@drawable/roundedbutton</item>
     </style>
+
+    <style name="CustomDialog" parent="GdxTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>
