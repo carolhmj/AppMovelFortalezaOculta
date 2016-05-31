@@ -2,11 +2,15 @@ package br.great.jogopervasivo.actvititesDoJogo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -25,6 +29,7 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +53,7 @@ import br.great.jogopervasivo.util.GPSListenerManager;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
 import br.great.jogopervasivo.util.MetodosUteis;
 import br.great.jogopervasivo.webServices.SolicitarMissaoAtual;
+import br.great.jogopervasivo.webServices.UploadDeArquivo;
 import br.ufc.great.arviewer.android.R;
 
 
@@ -438,6 +444,48 @@ public class Mapa extends Activity {
             Marker marker = mapa.addMarker(markerOptions);
             hashMarcadores.put(nome, marker);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e("TAG", "Executou onActivityResult");
+        if (resultCode == Activity.RESULT_OK) {
+
+            if (requestCode == REQUEST_CODE_FOTO) {
+                Log.i(Constantes.TAG, "Caminho da imagem: " + CFotos.pathDeImagem);
+                File foto = new File(CFotos.pathDeImagem);
+                UploadDeArquivo.enviarFoto(this, foto, mecanicaCFotoAtual);
+                mecanicaCFotoAtual = null;
+            } else if (requestCode == REQUEST_CODE_VIDEO) {
+                Log.i(Constantes.TAG, "Caminho do Video: ");
+                Uri fileUri = data.getData();
+                File file = new File(pegarPahRealDeURI(fileUri));
+                UploadDeArquivo.enviarVideo(this, file, mecanicaCVideosAtual);
+                mecanicaCVideosAtual = null;
+            } else if (requestCode == Deixar.REQUEST_CODE) {
+                Bundle extras = data.getExtras();
+                int mecSimplesId = extras.getInt(InventarioActivity.ITEM_ID);
+                String tipo = extras.getString(InventarioActivity.ITEM_TIPO);
+                String arquivo = extras.getString(InventarioActivity.ITEM_ARQUIVO);
+                mecanicaDeixarAtual.confirmarRealizacao(this, arquivo, tipo, mecSimplesId);
+                mecanicaDeixarAtual = null;
+            } else if (requestCode == REQUEST_CODE_VER_OBJ_3D) {
+                mecanicaVObj3dAtual.confirmarRealizacao(this, null, null, null);
+                mecanicaVObj3dAtual = null;
+            }
+        } else if (requestCode == Vfotos.REQUEST_CODE_VER_IMAGEM) {
+            Toast.makeText(this, "Viu a imagem", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == REQUEST_CODE_VER_VIDEO) {
+            mecanicaVVideosAtual.confirmarRealizacao(this, null, null, null);
+            mecanicaVVideosAtual = null;
+        }
+    }
+
+    public String pegarPahRealDeURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Video.VideoColumns.DATA);
+        return cursor.getString(idx);
     }
 
 }

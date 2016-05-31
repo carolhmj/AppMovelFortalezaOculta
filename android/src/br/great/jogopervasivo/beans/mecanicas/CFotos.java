@@ -1,5 +1,6 @@
 package br.great.jogopervasivo.beans.mecanicas;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.provider.MediaStore;
 import java.io.File;
 
 //import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+import br.great.jogopervasivo.actvititesDoJogo.Mapa;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
 import br.ufc.great.arviewer.android.R;
@@ -89,7 +91,7 @@ public class CFotos extends Mecanica implements Imecanica {
                     //Chama a intent da camera
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagem));
-//                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_FOTO);
+                    ((Activity)context).startActivityForResult(intent, Mapa.REQUEST_CODE_FOTO);
 
                 } else {
                     mostarToastFeedback(context);

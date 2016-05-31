@@ -1,5 +1,6 @@
 package br.great.jogopervasivo.beans.mecanicas;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -20,6 +21,7 @@ import java.io.File;
 
 
 //import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+import br.great.jogopervasivo.actvititesDoJogo.Mapa;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -96,7 +98,7 @@ public class CVideos extends Mecanica implements Imecanica {
                     File video = InformacoesTemporarias.criarVideoTemporario();
                     Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                     Log.i(Constantes.TAG, "Caminho do arquivo temporario: " + video.getAbsolutePath());
-//                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VIDEO);
+                    ((Activity)context).startActivityForResult(intent, Mapa.REQUEST_CODE_VIDEO);
 
                 } else {
                     mostarToastFeedback(context);
