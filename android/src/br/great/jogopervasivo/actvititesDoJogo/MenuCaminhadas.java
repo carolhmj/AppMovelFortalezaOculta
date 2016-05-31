@@ -2,6 +2,7 @@ package br.great.jogopervasivo.actvititesDoJogo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -70,45 +71,61 @@ public class MenuCaminhadas extends Activity {
             @Override
             public void onClick(View view) {
 
-                new AsyncTask<Void,Void,Boolean>(){
+                new AsyncTask<Void, Void, Boolean>() {
+
+                    ProgressDialog progressDialog;
+
+
+                    @Override
+                    protected void onPreExecute() {
+                        progressDialog = new ProgressDialog(MenuCaminhadas.this);
+                        progressDialog.setMessage(getString(R.string.obtendo_informacoes));
+                        progressDialog.show();
+                    }
 
                     @Override
                     protected Boolean doInBackground(Void... params) {
 
-                        TelephonyManager telephonyManager =  (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-                        String deviceId =  telephonyManager.getDeviceId();
-                        Log.i("Device ID",deviceId);
+
+                        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                        String deviceId = telephonyManager.getDeviceId();
+                        Log.i("Device ID", deviceId);
 
                         //primeiro Cria uma instancia de jogo novo
                         CriarNovaInstanciaDeJogo criarNovaInstanciaDeJogo = new CriarNovaInstanciaDeJogo(MenuCaminhadas.this);
-                        criarNovaInstanciaDeJogo.criar(Integer.toString(Jogo.CAMINHADA_BODE),deviceId);
+                        criarNovaInstanciaDeJogo.criar(Integer.toString(Jogo.CAMINHADA_BODE), deviceId);
 
                         //Recupera as instancias ja criadas
                         RecuperarInstanciasDeJogos recuperarInstanciasDeJogos = new RecuperarInstanciasDeJogos(MenuCaminhadas.this);
                         List<InstanciaDeJogo> instanciaDeJogoList = recuperarInstanciasDeJogos.recuperar(Jogo.CAMINHADA_BODE, InformacoesTemporarias.idJogador);
-                        for (InstanciaDeJogo i : instanciaDeJogoList){
+                        for (InstanciaDeJogo i : instanciaDeJogoList) {
 
                             //Recupera instancia com o  mesmo Device ID
-                            if (i.getNomeFicticio().equals(deviceId)){
-                                EscolherEquipe escolherEquipe =  new EscolherEquipe(MenuCaminhadas.this);
+                            if (i.getNomeFicticio().equals(deviceId)) {
+                                EscolherEquipe escolherEquipe = new EscolherEquipe(MenuCaminhadas.this);
                                 List<Grupo> grupos = escolherEquipe.recuperarGrupos(i.getId());
                                 InformacoesTemporarias.instanciaDeJogo = i;
-                                InformacoesTemporarias.grupo =  grupos.get(0);
+                                InformacoesTemporarias.grupo = grupos.get(0);
                                 Location localizacao = Armazenamento.resgatarUltimaLocalizacao(MenuCaminhadas.this);
-                                InicializarJogo inicializarJogo = new InicializarJogo(MenuCaminhadas.this,InformacoesTemporarias.instanciaDeJogo,InformacoesTemporarias.grupo, localizacao.getLatitude(),localizacao.getLongitude());
+                                InicializarJogo inicializarJogo = new InicializarJogo(MenuCaminhadas.this, InformacoesTemporarias.instanciaDeJogo, InformacoesTemporarias.grupo, localizacao.getLatitude(), localizacao.getLongitude());
                                 inicializarJogo.inicializar();
-                                Log.i(Constantes.TAG,"Inicializando o jogo");
+                                Log.i(Constantes.TAG, "Inicializando o jogo");
                                 InformacoesTemporarias.jogoAtual = i;
                                 InformacoesTemporarias.grupoAtual = grupos.get(0);
                                 Armazenamento.salvar(Constantes.JOGO_EXECUTANDO, true, MenuCaminhadas.this);//Diz que tem jogo executando;
                                 RecuperarObjetosInventario.recuperar(MenuCaminhadas.this);
-                                startActivity(new Intent(MenuCaminhadas.this,Mapa.class));
+                                startActivity(new Intent(MenuCaminhadas.this, Mapa.class));
                                 finish(); //Faz casting do Context para activity  e fecha a janela.
                                 return true;
                             }
                         }
 
-                        return null;
+                        return false;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Boolean aBoolean) {
+                        progressDialog.dismiss();
                     }
                 }.execute();
 
