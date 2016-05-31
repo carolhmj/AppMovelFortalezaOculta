@@ -52,7 +52,7 @@ public class Mecanica {
     public static final int VISIVEL_NAO = 0;
     public static final int VISIVEL_SIM = 1;
     public static final int VISIVEL_NUNCA = 2;
-    public static final int VISIVEL_NUNCA2 = 2;
+    public static final int VISIVEL_NUNCA2 = 3;
 
     public boolean isMostrar() {
         return mostrar;

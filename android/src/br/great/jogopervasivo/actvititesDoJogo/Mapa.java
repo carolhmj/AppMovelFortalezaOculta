@@ -75,7 +75,7 @@ public class Mapa extends Activity {
     private Marker marcadorJogador = null;
     private MarkerOptions markerOptions;
     private Map<String, Marker> hashMarcadores = new HashMap<>();
-    private boolean pediuMecanicas=false;
+    private boolean pediuMecanicas = false;
 
     CFotos mecanicaCFotoAtual = null;
     public static CVideos mecanicaCVideosAtual = null;
@@ -85,7 +85,7 @@ public class Mapa extends Activity {
 
     private static Mapa instancia;
 
-    public static Mapa getInstancia(){
+    public static Mapa getInstancia() {
         return instancia;
     }
 
@@ -106,11 +106,14 @@ public class Mapa extends Activity {
         GPSListenerManager.getGpsListener(this).setMapa(this);
 
         instancia = this;
+
+
     }
 
-    public void novaLocalizacao(Location location){
+    public void novaLocalizacao(Location location) {
         adicionarMarcadorJogador(location);
         verificarMensagem();
+        verificarMecanicasEscondidas();
     }
 
     //Adicinar marcador do jogador
@@ -187,9 +190,14 @@ public class Mapa extends Activity {
         super.onResume();
         configurarMapa();
 
+        Location l = Armazenamento.resgatarUltimaLocalizacao(this);
+        if (l != null) {
+            novaLocalizacao(l);
+        }
+
         //Elimina erros quando re-compilo o APK antes de fechar o antigo
         if (Armazenamento.resgatarBoolean(Constantes.JOGO_EXECUTANDO, this)) {
-            Log.i("Mecanicas","Pediu mecanica");
+            Log.i("Mecanicas", "Pediu mecanica");
             if (InformacoesTemporarias.jogoAtual == null) {
                 Armazenamento.salvar(Constantes.JOGO_EXECUTANDO, false, this);
                 invalidateOptionsMenu();
@@ -274,6 +282,7 @@ public class Mapa extends Activity {
         finish();
         super.onBackPressed();
     }
+
     /**
      * Verifica de alguma mensagem foi enviada ao jogador via GCM
      */
@@ -488,4 +497,14 @@ public class Mapa extends Activity {
         return cursor.getString(idx);
     }
 
+    private void verificarMecanicasEscondidas() {
+        if (InformacoesTemporarias.mecanicasAtuais != null) {
+            List<Mecanica> mecanicas = InformacoesTemporarias.mecanicasAtuais;
+            for (Mecanica mecanica : mecanicas) {
+                if (mecanica.getVisivel() == Mecanica.VISIVEL_NUNCA || mecanica.getVisivel() == Mecanica.VISIVEL_NUNCA2) {
+                    realizarMecanica(mecanica);
+                }
+            }
+        }
+    }
 }
