@@ -96,8 +96,9 @@
     <string name="objeto_compaartilhado">Objeto compartilhado com </string>
     <string name="sem_permissao_para_realizar_mecanica">Voce não tem permissão para realizar essa mecânica.</string>
     <string name="menu">Menu</string>
-    <string name="caminhadas">Caminhadas</string>
-    <string name="cooperativo">Cooperativo</string>
+    <string name="caminhadas">Caminhar</string>
+    <string name="cooperativo">Cooperar</string>
+    <string name="conectar">Conectar</string>
     <string name="em_construcao">Ainda em construção</string>
     <string name="bode_ioio">Bode Ioio</string>
     <string name="calungueira" translatable="false">Calungueira</string>

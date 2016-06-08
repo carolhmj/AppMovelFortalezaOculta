@@ -123,7 +123,7 @@ public class Mapa extends Activity {
             if (markerOptions == null) {
                 markerOptions = new MarkerOptions();
             }
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_jogador))
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_jogador))
                     .title(getString(R.string.eu))
                     .snippet(InformacoesTemporarias.nomeJogador)
                     .position(new LatLng(location.getLatitude(), location.getLongitude()));
@@ -310,7 +310,14 @@ public class Mapa extends Activity {
             Location localizacaoMecanica = new Location(LocationManager.GPS_PROVIDER);
             localizacaoMecanica.setLatitude(mecanica.getLocalizacao().latitude);
             localizacaoMecanica.setLongitude(mecanica.getLocalizacao().longitude);
-            if (localizacaoJogador.distanceTo(localizacaoMecanica) < Constantes.LIMIAR_DE_PROXIMIDADE) {
+
+            Log.i("LOCAL JOGADOR",localizacaoJogador.toString());
+            Log.i("LOCAL MECANICA",localizacaoMecanica.toString());
+            Log.i("DISTANCIA", localizacaoMecanica.distanceTo(localizacaoJogador)+"");
+
+            float distancia = localizacaoMecanica.distanceTo(localizacaoJogador);
+
+            if (distancia < Constantes.LIMIAR_DE_PROXIMIDADE) {
                 String tipoMecanica = mecanica.getTipoSimples();
 
                 switch (tipoMecanica) {
@@ -440,7 +447,7 @@ public class Mapa extends Activity {
                     }
                     break;
                 case MARCADOR_ALIADO:
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_jogador));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_jogador));
                     break;
                 case MARCADOR_MECANICA_REALIZADA:
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_bandeira_azul));

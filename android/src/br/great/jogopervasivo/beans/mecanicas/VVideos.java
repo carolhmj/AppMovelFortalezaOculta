@@ -1,5 +1,6 @@
 package br.great.jogopervasivo.beans.mecanicas;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +18,7 @@ import java.io.File;
 
 
 //import br.great.jogopervasivo.actvititesDoJogo.TelaPrincipalActivity;
+import br.great.jogopervasivo.actvititesDoJogo.Mapa;
 import br.great.jogopervasivo.beans.Mecanica;
 import br.great.jogopervasivo.util.Constantes;
 import br.great.jogopervasivo.util.InformacoesTemporarias;
@@ -90,8 +92,8 @@ public class VVideos extends Mecanica implements Imecanica {
                     Intent intent = new Intent();
                     intent.setAction(android.content.Intent.ACTION_VIEW);
                     intent.setDataAndType(Uri.fromFile(new File(Constantes.PASTA_DE_ARQUIVOS, getArqVideo())), "video/*");
-//                    TelaPrincipalActivity.mecanicaVVideosAtual = VVideos.this;
-//                    context.startActivityForResult(intent, TelaPrincipalActivity.REQUEST_CODE_VER_VIDEO);
+                    Mapa.mecanicaVVideosAtual = VVideos.this;
+                    ((Activity) context).startActivityForResult(intent, Mapa.REQUEST_CODE_VER_VIDEO);
                 } else {
                     mostarToastFeedback(context);
                 }

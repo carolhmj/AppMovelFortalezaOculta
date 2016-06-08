@@ -2,6 +2,7 @@ package br.great.jogopervasivo.actvititesDoJogo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,9 +18,9 @@ public class SplashScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SobrescreverFonte.setDefaultFont(this, "SANS_SERIF", "fonts/GeosansLight.ttf");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        SobrescreverFonte.setDefaultFont(this, "SANS_SERIF", "fonts/GeosansLight.ttf");
         iniciarComponentes();
     }
 
@@ -27,6 +28,7 @@ public class SplashScreen extends Activity {
         webView = (WebView) findViewById(R.id.webViewAnimacao);
         webView.loadUrl("file:///android_asset/htmls/animacao.html");
         webView.setSaveEnabled(false);
+        webView.setBackgroundColor(Color.TRANSPARENT);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class SplashScreen extends Activity {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    Thread.sleep(5*1000);
+                    Thread.sleep( 2 * 1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

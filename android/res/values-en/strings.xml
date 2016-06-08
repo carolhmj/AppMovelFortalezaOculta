@@ -93,6 +93,5 @@
     <string name="cooperativo">Cooperative</string>
     <string name="em_construcao">Under construction</string>
     <string name="bode_ioio">Goat Ioio</string>
-    <string name="calungueira"></string>
-    <string name="gato_pingado"></string>
+    <string name="conectar">Connect</string>
 </resources>

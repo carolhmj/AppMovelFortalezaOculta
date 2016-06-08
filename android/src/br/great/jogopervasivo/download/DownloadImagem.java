@@ -87,7 +87,7 @@ public class DownloadImagem extends AsyncTask<String, Void, Bitmap> {
     public static void salvarImagemNoSistemaDeArquivos(String nome, Bitmap foto) throws FileNotFoundException {
         File fotoFile = InformacoesTemporarias.criarImagemTemporaria();
         FileOutputStream fos = new FileOutputStream(fotoFile);
-        foto.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+        foto.compress(Bitmap.CompressFormat.PNG, 100, fos);
         fotoFile.renameTo(new File(fotoFile.getParent() + "/" + nome));
     }
 }
